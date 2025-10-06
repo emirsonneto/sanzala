@@ -10,7 +10,7 @@ O projeto tem como missão unir **tecnologia, cultura africana e aprendizado**, 
 
 - 🐍 **Python** (Flask Framework)
 - 🧱 **HTML5, CSS3, Bootstrap**
-- 🗃️ **SQLite / SQLAlchemy**
+- 🗃️ **PostGresql** 
 - 🔐 **Autenticação e sessões seguras**
 - 🧩 **Estrutura modular com Blueprints**
 
@@ -40,3 +40,44 @@ O projeto tem como missão unir **tecnologia, cultura africana e aprendizado**, 
    ```bash
    git clone https://github.com/emirsonneto/sanzala.git
    cd sanzala
+
+2. Criar e ativar o ambiente virtual:
+
+python -m venv venv
+source venv/bin/activate  # (Linux/Termux)
+
+
+3. Instalar dependências:
+
+pip install -r requirements.txt
+
+
+4. Rodar o servidor Flask:
+
+python main.py 
+
+
+
+👨🏾‍💻 Autor
+
+Emirson Neto
+Desenvolvedor back-end júnior | Entusiasta de Flask e CTFs educativos
+📍 Huíla, Angola
+@emirsonneto@gmail.com | +244 935 320 903
+💼 github.com/emirsonneto
+
+---
+
+🌟 Contribuição
+
+Sinta-se à vontade para contribuir com ideias, correções e melhorias.
+Cada contribuição é uma forma de fortalecer nossa Sanzala Digital.
+
+
+---
+
+📜 Licença
+
+Este projeto é distribuído sob a licença MIT.
+Isso significa que podes usar, modificar e partilhar livremente, desde que mantenha os créditos.
+
