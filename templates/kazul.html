@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='kongo.css') }}">
+{% endblock %}
+{% block content %}
+<h1>🏛️ Missão Cripto – Parte 4: Os Corredores Proibidos</h1>
+
+<p>
+  No silêncio da noite, Kiala encontra um velho pergaminho digital escondido na biblioteca de Mbanza Kongo.<br>
+  Nele, dois nomes aparecem com tinta quase apagada: <code>/robots.txt</code> e <code>/sitemap.xml</code>.
+</p>
+
+<div class="fala">
+  “Esses nomes são como guardas dormindo. Se passares por eles, encontrarás os verdadeiros segredos do reino.”
+</div>
+
+<h2>🕵️ Etapa 1: Segue as pistas do <code>robots.txt</code></h2>
+<p>
+  Tu visitas o caminho <code>/robots.txt</code> e lá está:
+</p>
+<div class="pre-box">
+<pre>
+User-agent: *
+Disallow: /admin
+Disallow: /backup.zip
+</pre>
+</div>
+
+<p>✅ Opa! Dois caminhos escondidos: <code>/admin</code> e <code>/backup.zip</code>.</p>
+
+<div class="exercicio">
+  <strong>Exercício:</strong> Um caminho secreto foi revelado. Qual?
+  <input id="resRobot2" placeholder="Ex: /admin">
+  <button onclick="verificaRobot2()">Confirmar</button>
+  <p id="fbRobot2" class="resultado"></p>
+</div>
+
+<h2>🗺️ Etapa 2: O mapa real do <code>sitemap.xml</code></h2>
+<p>
+  O arquivo <code>sitemap.xml</code> mostra caminhos "seguros", mas entre eles... um estranho:
+</p>
+<div class="pre-box">
+<pre>
+<url>
+  <loc>https://kongo.com/home</loc>
+</url>
+<url>
+  <loc>https://kongo.com/contacto</loc>
+</url>
+<url>
+  <loc>https://kongo.com/user?admin=true</loc>
+</url>
+</pre>
+</div>
+<p>🤔 Um link com <code>?admin=true</code>? Estranho né?</p>
+
+<div class="exercicio">
+  <strong>Exercício:</strong> Qual link merece investigação mais profunda?
+  <input id="resMapa" placeholder="Ex: /user?admin=true">
+  <button onclick="verificaMapa()">Confirmar</button>
+  <p id="fbMapa" class="resultado"></p>
+</div>
+
+<h2>🏛️ Etapa 3: Cabeçalhos e extensões suspeitas</h2>
+<p>
+  Tu decides visitar o caminho <code>/admin</code>. Ao usar um comando especial como <code>HEAD</code>, vês que ele responde com:
+</p>
+<div class="pre-box">
+<pre>
+HTTP/1.1 200 OK
+X-Powered-By: PHP/7.4
+</pre>
+</div>
+
+<p>✨ Isso revela muito! Também testas caminhos como:</p>
+<ul>
+  <li><code>/admin.bak</code></li>
+  <li><code>/admin.zip</code></li>
+  <li><code>/admin.php</code></li>
+</ul>
+
+<p>❌ Algum deles não deviam estar acessíveis, mas estão...</p>
+
+<div class="exercicio">
+  <strong>Exercício:</strong> Qual dessas opções é uma extensão perigosa que pode conter código?
+  <input id="resExt" placeholder="Ex: .php">
+  <button onclick="verificaExtensao()">Confirmar</button>
+  <p id="fbExt" class="resultado"></p>
+</div>
+
+<div class="fala">
+  “Tu agora sabes: os caminhos proibidos nem sempre estão trancados. Aprendeste a rastrear, deduzir e investigar como um verdadeiro espião do ciberespaço.”
+</div>
+
+<script>
+function verificaRobot2() {
+  const val = document.getElementById("resRobot2").value.trim().toLowerCase();
+  const fb = document.getElementById("fbRobot2");
+  fb.innerText = (val === "/admin") ? "✅ Correto! Estava escondido no robots.txt." : "❌ Verifica de novo no texto.";
+  fb.style.color = (val === "/admin") ? "green" : "red";
+}
+function verificaMapa() {
+  const val = document.getElementById("resMapa").value.trim().toLowerCase();
+  const fb = document.getElementById("fbMapa");
+  fb.innerText = (val.includes("admin")) ? "✅ Isso mesmo! Algo suspeito nesse link." : "❌ Esse não parece estranho...";
+  fb.style.color = (val.includes("admin")) ? "green" : "red";
+}
+function verificaExtensao() {
+  const val = document.getElementById("resExt").value.trim().toLowerCase();
+  const fb = document.getElementById("fbExt");
+  if (val === ".php") {
+    fb.innerText = "✅ Sim! Arquivos .php podem conter código executável.";
+    fb.style.color = "green";
+  } else {
+    fb.innerText = "❌ Hmm... essa não era a mais perigosa.";
+    fb.style.color = "red";
+  }
+}
+</script>
+{% endblock %}

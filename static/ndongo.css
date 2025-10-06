@@ -1,0 +1,104 @@
+body {
+  background-color: #1e1e1e;
+  color: #f8f8f2;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  padding: 30px;
+  max-width: 900px;
+  margin: auto;
+}
+h1, h2 {
+  color: #8be9fd;
+}
+.fala {
+  background-color: #2d2d2d;
+  border-left: 4px solid #ff79c6;
+  padding: 15px;
+  margin: 20px 0;
+  font-style: italic;
+}
+.pre-box {
+  background-color: #282a36;
+  color: #f8f8f2;
+  padding: 10px;
+  font-family: monospace;
+  white-space: pre-wrap;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+.exercicio {
+  background-color: #44475a;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+input {
+  padding: 8px;
+  width: 90%;
+  background: #1e1e1e;
+  border: 1px solid #6272a4;
+  color: #f8f8f2;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+button {
+  background-color: #50fa7b;
+  border: none;
+  padding: 8px 12px;
+  color: #1e1e1e;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.resultado {
+  margin-top: 10px;
+  font-weight: bold;
+}
+.correto {
+  color: #50fa7b;
+}
+.errado {
+  color: #ff5555;
+}
+.avatar {
+  max-width: 120px;
+  border-radius: 50%;
+  margin: 20px auto;
+  display: block;
+}
+code {
+  background-color: #44475a;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  color: #f1fa8c;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  border: 2px solid #c2a83e; /* dourado */
+  border-radius: 12px;
+  background-color: #fdf8e7;
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+.radio-option:hover {
+  background-color: #fff6c2;
+  transform: scale(1.02);
+}
+
+.radio-option input[type="radio"] {
+  accent-color: #6e4b8a; /* roxo real */
+  transform: scale(1.3);
+  cursor: pointer;
+}
+
+label{
+  color: #1e1e1e;
+}

@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='kemet.css') }}">
+{% endblock %}
+{% block content %}
+<h1>🌟 Missão: Os Códigos de Kemet</h1>
+
+<p>
+  No coração do Antigo Egito, chamado <strong>Kemet</strong> — a "Terra Negra" — o saber era mais valioso que ouro.  
+  Escribas não usavam espadas. Usavam tinta, papiro e... <strong>precisão</strong>.
+</p>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Imhotep.png" alt="Imhotep" class="avatar">
+
+<div class="fala">
+  “Eu sou <strong>Imhotep</strong>, mestre dos cálculos eternos. Hoje, você não erguerá pirâmides com pedras, mas com <code>CSS</code>. Vamos colorir as palavras da verdade.”
+</div>
+
+<h2>🎨 Etapa 1: Mudando a cor do texto</h2>
+<p>Use o atributo <code>style</code> com <code>color</code> para alterar a cor de um texto:</p>
+<div class="pre-box">
+  &lt;p style="color: red;"&gt;Kemet vive!&lt;/p&gt;
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 1:</strong> Faça um parágrafo com o texto azul:
+  <input id="res1" placeholder='Ex: <p style="color: blue;">Texto</p>'>
+  <button onclick="verificaCss('res1', 'blue', 'feedback1')">Confirmar</button>
+  <div id="feedback1" class="resultado"></div>
+</div>
+
+<h2>🌄 Etapa 2: Cor de fundo</h2>
+<p>Use <code>background-color</code> para mudar o fundo:</p>
+<div class="pre-box">
+  &lt;div style="background-color: black; color: white;"&gt;A noite em Kemet&lt;/div&gt;
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 2:</strong> Crie um <code>&lt;div&gt;</code> com fundo amarelo e texto preto:
+  <input id="res2" placeholder='Ex: <div style="background-color: yellow; color: black;">Texto</div>'>
+  <button onclick="verificaBg('res2', 'yellow', 'black', 'feedback2')">Confirmar</button>
+  <div id="feedback2" class="resultado"></div>
+</div>
+
+<h2>🔠 Etapa 3: Tamanho da fonte</h2>
+<p>Use <code>font-size</code> para controlar o tamanho da letra:</p>
+<div class="pre-box">
+  &lt;p style="font-size: 28px;"&gt;Imhotep fala alto&lt;/p&gt;
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 3:</strong> Faça um texto com tamanho 32px:
+  <input id="res3" placeholder='Ex: <p style="font-size: 32px;">Grande</p>'>
+  <button onclick="verificaSize('res3', '32px', 'feedback3')">Confirmar</button>
+  <div id="feedback3" class="resultado"></div>
+</div>
+
+<h2>⚔️ Etapa 4: Bordas</h2>
+<p>Use <code>border</code> para criar contornos:</p>
+<div class="pre-box">
+  &lt;div style="border: 2px solid red;"&gt;Mensagem Sagrada&lt;/div&gt;
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 4:</strong> Crie uma <code>&lt;div&gt;</code> com borda azul de 3px:
+  <input id="res4" placeholder='Ex: <div style="border: 3px solid blue;">Texto</div>'>
+  <button onclick="verificaBorder('res4', '3px', 'blue', 'feedback4')">Confirmar</button>
+  <div id="feedback4" class="resultado"></div>
+</div>
+
+<div class="fala">
+  “Você invocou o poder das cores e formas. As divindades de Kemet sorriem sobre você.  
+  A próxima missão te levará à <em>Casa da Vida</em> <a href="{{ url_for('desafio_bp.kemet_css')}}" class="btn btn-sm btn-outline-light">aqui</a>, onde o saber é imortal.”
+</div>
+
+<!-- FLAG OCULTA -->
+<!-- 3c0{kemet_vive_nas_cores_do_codigo} -->
+
+<script>
+function verificaCss(id, corEsperada, idFeedback) {
+  const input = document.getElementById(id).value.toLowerCase();
+  const feedback = document.getElementById(idFeedback);
+  if (input.includes('style="') && input.includes('color: ' + corEsperada)) {
+    feedback.innerHTML = "✅ Cor correta aplicada!";
+    feedback.className = "resultado correto";
+  } else {
+    feedback.innerHTML = "❌ Use color: " + corEsperada;
+    feedback.className = "resultado errado";
+  }
+}
+
+function verificaBg(id, bg, cor, idFeedback) {
+  const input = document.getElementById(id).value.toLowerCase();
+  const feedback = document.getElementById(idFeedback);
+  if (input.includes('background-color: ' + bg) && input.includes('color: ' + cor)) {
+    feedback.innerHTML = "✅ Perfeito! Cores corretas!";
+    feedback.className = "resultado correto";
+  } else {
+    feedback.innerHTML = "❌ Use background-color: " + bg + " e color: " + cor;
+    feedback.className = "resultado errado";
+  }
+}
+
+function verificaSize(id, tamanho, idFeedback) {
+  const input = document.getElementById(id).value.toLowerCase();
+  const feedback = document.getElementById(idFeedback);
+  if (input.includes('font-size: ' + tamanho)) {
+    feedback.innerHTML = "✅ Tamanho aplicado corretamente!";
+    feedback.className = "resultado correto";
+  } else {
+    feedback.innerHTML = "❌ Use font-size: " + tamanho;
+    feedback.className = "resultado errado";
+  }
+}
+
+function verificaBorder(id, px, cor, idFeedback) {
+  const input = document.getElementById(id).value.toLowerCase();
+  const feedback = document.getElementById(idFeedback);
+  if (input.includes('border: ' + px + ' solid ' + cor)) {
+    feedback.innerHTML = "✅ Borda correta!";
+    feedback.className = "resultado correto";
+  } else {
+    feedback.innerHTML = "❌ Use border: " + px + " solid " + cor;
+    feedback.className = "resultado errado";
+  }
+}
+</script>
+{% endblock %}

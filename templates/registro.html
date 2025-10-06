@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='registro.css')}}">
+{% endblock %}
+{% block content %}
+<div class="register-box">
+
+  <a href="{{ url_for('auth.login') }}" class="back-btn">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+
+  <h2><i class="bi bi-person-plus-fill"></i> Registro na Sanzala</h2>
+
+  <form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div class="row mb-2">
+      <div class="col-md-4">
+        <label>{{ form.nome.label }}</label>
+        {{ form.nome(class="form-control", placeholder="Nzinga") }}
+      </div>
+      <div class="col-md-4">
+        <label>{{ form.email.label }}</label>
+        {{ form.email(class="form-control", placeholder="exemplo@email.com") }}
+      </div>
+      <div class="col-md-4">
+        <label>{{ form.origem.label }}</label>
+        {{ form.origem(class="form-select") }}
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-md-4">
+        <label>{{ form.senha.label }}</label>
+        {{ form.senha(class="form-control") }}
+      </div>
+      <div class="col-md-4">
+        <label>{{ form.csenha.label }}</label>
+        {{ form.csenha(class="form-control") }}
+      </div>
+      <div class="col-md-4">
+        <label>{{ form.pin.label }}</label>
+        {{ form.pin(class="form-control", placeholder="1234") }}
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label>{{ form.avatar.label }}</label>
+      {{ form.avatar(id="avatar-selecionado", class="form-select") }}
+      <strong>Prévia do avatar:</strong><br>
+      <img id="avatar_preview" src="{{ form.avatar.choices[0][0] }}" width="100" style="border-radius: 50%; border: 2px solid #333;"><br><br>
+    </div>
+
+    <div class="form-check mb-3">
+      {{ form.termos(class="form-check-input") }}
+      <label class="form-check-label">
+        Aceito os <a href="{{url_for('public.termos')}}">termos e condições</a>
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn-register">
+      <i class="bi bi-person-check-fill"></i> {{ form.submit.label.text }}
+    </button>
+
+    <p class="text-center mt-3">
+      <small>Já tens conta? <a href="{{ url_for('auth.login') }}">Faz login</a></small>
+    </p>
+  </form>
+</div>
+<script>
+    const select = document.getElementById('avatar-selecionado');
+    const preview = document.getElementById('avatar_preview');
+
+    select.addEventListener('change', function() {
+        preview.src = this.value;
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,112 @@
+:root {
+  --color-primary: #00ffaa;
+  --color-accent: #00ccff;
+  --color-alt: #8f00ff;
+  --color-dark: #0a0a0a;
+  --color-panel: #141414;
+  --color-text: #ccfffa;
+}
+
+body {
+  background-color: var(--color-dark);
+  color: var(--color-text);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.recover-box {
+  background: var(--color-panel);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 255, 170, 0.1);
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--color-accent);
+  color: #000;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  text-decoration: none;
+  transition: 0.3s ease;
+  box-shadow: 0 0 8px rgba(0, 204, 255, 0.4);
+}
+
+.back-btn:hover {
+  background: var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+  color: var(--color-primary);
+}
+
+label {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  margin-bottom: 0.2rem;
+}
+
+.form-control {
+  background-color: #000;
+  border: 1px solid var(--color-primary);
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+.form-control:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 4px var(--color-accent);
+}
+
+.btn-reset {
+  background: var(--color-primary);
+  border: none;
+  width: 100%;
+  font-weight: 600;
+  color: #000;
+  padding: 0.6rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-reset:hover {
+  background: var(--color-accent);
+  color: #000;
+  box-shadow: 0 0 8px var(--color-accent);
+}
+
+.form-check-label {
+  font-size: 0.8rem;
+}
+
+.form-check-input:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+small a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+small a:hover {
+  text-decoration: underline;
+}

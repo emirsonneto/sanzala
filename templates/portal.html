@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container d-flex justify-content-center flex-column align-items-center">
+    <h1>Bem-vindo, colaborador {{user}}</h1>
+
+    <h3>Email</h3>
+    <ul>
+        {% for e in emails %}
+            {% if e == "admin@sanzala.com" %}
+                <li style="color:red;">⚠ Acesso especial concedido para {{ e }}</li>
+            {% else %}
+                <li>Área normal para {{ e }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

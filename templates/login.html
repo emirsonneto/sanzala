@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+{% endblock %}
+{% block content %}
+<div class="login-box">
+  <a href="{{ url_for('public.home') }}" class="back-btn">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+  <h2><i class="bi bi-box-arrow-in-right"></i> Login na Sanzala</h2>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+      {{ form.email.label(class="form-label") }}
+      {{ form.email(class="form-control", placeholder="exemplo@email.com") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.senha.label(class="form-label") }}
+      {{ form.senha(class="form-control", placeholder="********") }}
+    </div>
+
+    <div class="form-check mb-3">
+      {{ form.termos(class="form-check-input", id="termos") }}
+      <label class="form-check-label" for="termos">
+        Aceito os <a href="{{url_for('public.termos')}}">termos e condições</a>
+      </label>
+    </div>
+
+    {{ form.submit(class="btn btn-login") }}
+
+    <p class="text-center mt-3">
+      <small>
+       <a href="{{ url_for('auth.registro') }}">Criar conta</a>
+      </small>
+    </p>
+  </form>
+</div>
+{% endblock %}

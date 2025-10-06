@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='terms.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h1 class="text-success mb-4">Termos & Condições de Uso</h1>
+  <p class="text-muted mb-5"><em>Data de Vigência: 19 de Outubro de 2025</em></p>
+
+  <section class="mb-4">
+    <h2 class="h5 text-primary">1. Definições</h2>
+    <ul>
+      <li><strong>Plataforma / Sanzala</strong>: o site e seus serviços (blog, missões CTF, comunidade, etc.).</li>
+      <li><strong>Usuário</strong>: pessoa física que cria conta ou navega na Sanzala.</li>
+      <li><strong>Conteúdo</strong>: textos, imagens, vídeos, códigos e demais materiais disponibilizados.</li>
+    </ul>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="h5 text-primary">2. Aceitação dos Termos</h2>
+    <p>Ao acessar ou usar a Sanzala, você concorda em seguir estes Termos e Condições e nossa Política de Privacidade. Caso não concorde, não utilize nossos serviços.</p>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="h5 text-primary">3. Cadastro e Acesso</h2>
+    <ul>
+      <li>Para participar das missões ou postar no blog, é necessário criar uma conta com e‑mail válido.</li>
+      <li>Você é responsável por manter a confidencialidade da sua senha e PIN de recuperação.</li>
+    </ul>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="h5 text-primary">4. Conduta do Usuário</h2>
+    <ul>
+      <li>Respeitar os demais membros da comunidade.</li>
+      <li>Não praticar ataques a terceiros, DDoS, invasão de sistemas ou outras atividades ilegais.</li>
+      <li>Evitar spoilers de flags ou soluções de desafio em áreas públicas.</li>
+      <li>Não publicar conteúdo ilícito, difamatório, ofensivo ou protegido por direitos de terceiros.</li>
+    </ul>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="h5 text-primary">5. Conteúdo e Direitos Autorais</h2>
+    <ul>
+      <li>Todo conteúdo original da Sanzala pertence à equipe Sanzala e está protegido por direitos autorais.</li>
+      <li>Você pode compartilhar links, mas não copiar integralmente sem autorização.</li>
+      <li>Conteúdos enviados pelos usuários permanecem sob responsabilidade de quem publica, mas podem ser moderados ou removidos.</li>
+    </ul>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="h5 text-primary">6. Privacidade</h2>
+    <p>Coletamos apenas dados necessários para cadastro, comunicação e segurança. Não vendemos ou compartilhamos seus dados pessoais. Veja nossa <a href="{{ url_for('public.home') }}">Política de Privacidade</a> para mais detalhes.</p>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="h5 text-primary">7. Limitação de Responsabilidade</h2>
+    <p>A Sanzala não se responsabiliza por perdas de dados, falhas de acesso ou danos decorrentes do uso ou incapacidade de uso do serviço. Os conteúdos são fornecidos "no estado em que se encontram", sem garantias.</p>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="h5 text-primary">8. Modificações</h2>
+    <p>Podemos alterar estes Termos a qualquer momento. Publicaremos a nova versão com data de vigência atualizada. O uso contínuo após modificações implica aceitação.</p>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="h5 text-primary">9. Rescisão</h2>
+    <ul>
+      <li>Podemos suspender ou encerrar sua conta se você violar estes Termos.</li>
+      <li>Você pode excluir sua conta a qualquer momento entrando em contato via e‑mail.</li>
+    </ul>
+  </section>
+
+  <section class="mb-4">
+    <h2 class="h5 text-primary">10. Legislação Aplicável e Foro</h2>
+    <p>Estes Termos são regidos pela legislação Angolana. Fica eleito o foro da Comarca de Luanda, Angola, para resolver eventuais disputas.</p>
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='timbuktu2.css') }}">
+{% endblock %}
+{% block content %}
+<h1>🔮 Missão: A Lógica do Selo Real</h1>
+
+<p>
+  No salão interno do palácio de Wagadu, onde o ouro não brilha mais do que a inteligência, os escribas reais usavam códigos para prever o tempo, controlar mercados e enviar mensagens secretas.
+  Agora é a sua vez de dominar as <strong>funções</strong>, <strong>eventos</strong> e <strong>manipulação de elementos</strong> com JavaScript.
+</p>
+
+<div class="fala">
+  "Cada linha de código é um decreto. Cada evento é um mensageiro. Seja digno do Selo Real."
+</div>
+
+<h2>🧰 Etapa 1: Criando Funções</h2>
+<p>
+  Funções são blocos de código que só são executados quando chamados:
+</p>
+<div class="pre-box">
+&lt;script&gt;<br>
+function saudar() {<br>
+&nbsp;&nbsp;alert("Saudações do trono de Gana!");<br>
+}<br>
+&lt;/script&gt;
+</div>
+
+<p>
+  E chamamos assim: <code>saudar()</code>
+</p>
+
+<div class="exercicio">
+  <strong>Exercício 1:</strong> Crie uma função chamada <code>mostrarReino</code> que mostre "Viva Gana!":<br>
+  <input id="res1" placeholder='Ex: <script>function mostrarReino(){ alert("Viva Gana!"); }</script>'>
+  <button onclick="verificaJS4('res1', 'feedback1')">Confirmar</button>
+  <div id="feedback1" class="resultado"></div>
+</div>
+
+<h2>🔍 Etapa 2: Interagindo com Elementos</h2>
+<p>
+  Podemos alterar o conteúdo de uma página usando <code>document.getElementById()</code>:
+</p>
+<div class="pre-box">
+&lt;p id="mensagem"&gt;&lt;/p&gt;<br>
+&lt;script&gt;<br>
+document.getElementById("mensagem").innerText = "A sabedoria vive aqui.";<br>
+&lt;/script&gt;
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 2:</strong> Altere o texto de um parágrafo com id <code>eco</code> para "Eco de Gana":<br>
+  <input id="res2" placeholder='Ex: <script>document.getElementById("eco").innerText = "Eco de Gana";</script>'>
+  <button onclick="verificaJS5('res2', 'feedback2')">Confirmar</button>
+  <div id="feedback2" class="resultado"></div>
+</div>
+
+<h2>🛍️ Etapa 3: Escondendo e Revelando</h2>
+<p>
+  Podemos esconder ou mostrar elementos com <code>style.display</code>:
+</p>
+<div class="pre-box">
+&lt;div id="segredo" style="display:none"&gt;Segredo Real&lt;/div&gt;<br>
+&lt;button onclick="document.getElementById('segredo').style.display = 'block';"&gt;Mostrar&lt;/button&gt;
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 3:</strong> Mostre um div com id <code>ouro</code> usando JavaScript:<br>
+  <input id="res3" placeholder='Ex: <script>document.getElementById("ouro").style.display="block";</script>'>
+  <button onclick="verificaJS6('res3', 'feedback3')">Confirmar</button>
+  <div id="feedback3" class="resultado"></div>
+</div>
+
+<div class="fala">
+  "Muito bem, jovem escriba. Tu agora controlas a lógica dos antigos. No próximo selo, manipularemos listas, criaremos loops, e dançaremos com condições."
+</div>
+
+<!-- FLAG OCULTA -->
+<!-- 3c0{funcoes_do_selo_real} -->
+
+<script>
+function verificaJS4(id, feedbackId) {
+  const val = document.getElementById(id).value.toLowerCase();
+  const ok = val.includes('function') && val.includes('mostrarreino') && val.includes('alert');
+  const f = document.getElementById(feedbackId);
+  f.innerHTML = ok ? "✅ Função criada com sucesso!" : "❌ Verifique a sintaxe da função.";
+  f.className = ok ? "resultado correto" : "resultado errado";
+}
+
+function verificaJS5(id, feedbackId) {
+  const val = document.getElementById(id).value.toLowerCase();
+  const ok = val.includes('getelementbyid') && val.includes('eco') && val.includes('innertext') && val.includes('eco de gana');
+  const f = document.getElementById(feedbackId);
+  f.innerHTML = ok ? "✅ Texto alterado com sucesso!" : "❌ Verifique o uso de getElementById e innerText.";
+  f.className = ok ? "resultado correto" : "resultado errado";
+}
+
+function verificaJS6(id, feedbackId) {
+  const val = document.getElementById(id).value.toLowerCase();
+  const ok = val.includes('getelementbyid') && val.includes('ouro') && val.includes('style.display') && val.includes('block');
+  const f = document.getElementById(feedbackId);
+  f.innerHTML = ok ? "✅ Elemento revelado com sucesso!" : "❌ Verifique o uso de style.display com block.";
+  f.className = ok ? "resultado correto" : "resultado errado";
+}
+</script>
+{% endblock %}

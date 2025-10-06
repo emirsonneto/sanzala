@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{%block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='desafios.css') }}">
+{% endblock%}
+{% block content %}
+<main class="container">
+<a href="{{ url_for('public.home') }}" class="back-icon">
+    <i class="bi bi-arrow-left"></i>
+</a>
+  <h2><i class="bi bi-flag-fill"></i> Missões Disponíveis</h2>
+
+  <!-- Filtros -->
+  <div class="filter-box">
+    <div class="row">
+      <div class="col-md-6 mb-2">
+        <select class="form-select">
+          <option selected disabled>Dificuldade</option>
+          <option>Fácil</option>
+          <option>Médio</option>
+          <option>Avançado</option>
+        </select>
+      </div>
+      <div class="col-md-6 mb-2">
+        <select class="form-select">
+          <option selected disabled>Categoria</option>
+          <option>Exploração</option>
+          <option>Resgate</option>
+          <option>Defesa</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Missões -->
+  <div class="row g-3">
+    {% for desafio in desafios %}
+      {% set visual = mapa_visual.get(desafio.categoria, {'cor': 'verde', 'icone': 'bi-question-circle'}) %}
+      <div class="col-12 col-md-6 col-lg-3">
+        <div class="card-missao categoria-{{ visual.cor }} {{ visual.cor }}">
+          <h5><i class="bi {{ visual.icone }}"></i> {{ desafio.titulo }}</h5>
+          <p>{{ desafio.descricao }}</p>
+          <a href="{{ url_for('desafio_bp.ver_desafio', id=desafio.id, slug=desafio.slug ) }}" class="btn btn-sm btn-outline-light"><div class="decor-ball"></div></a>
+          </div>
+      </div>
+    {% endfor %}
+</main>
+   <nav>
+    <ul class="pagination justify-content-center mt-5 mb-0">
+      <li class="page-item disabled"><span class="page-link">Anterior</span></li>
+      <li class="page-item active"><span class="page-link">1</span></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+    </ul>
+  </nav>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 footer-section">
+        <h6><i class="bi bi-link-45deg"></i> Links Úteis</h6>
+        <ul>
+          <li><a href="#" class="text-decoration-none text-light">Início</a></li>
+          <li><a href="#" class="text-decoration-none text-light">Missões</a></li>
+          <li><a href="#" class="text-decoration-none text-light">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-section">
+        <h6><i class="bi bi-info-circle"></i> Sobre a Sanzala</h6>
+        <ul>
+          <li><a href="#" class="text-decoration-none text-light">História</a></li>
+          <li><a href="#" class="text-decoration-none text-light">Objetivos</a></li>
+          <li><a href="#" class="text-decoration-none text-light">Equipe</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-section">
+        <h6><i class="bi bi-share-fill"></i> Social</h6>
+        <ul>
+          <li><a href="#" class="text-decoration-none text-light"><i class="bi bi-discord"></i> Discord</a></li>
+          <li><a href="#" class="text-decoration-none text-light"><i class="bi bi-twitter"></i> Twitter</a></li>
+          <li><a href="#" class="text-decoration-none text-light"><i class="bi bi-instagram"></i> Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      © 2025 A Sanzala. Todos os direitos reservados. | <a href="#" class="text-decoration-none text-secondary">Termos & Condições</a>
+    </div>
+  </div>
+</footer>
+
+{% endblock %}

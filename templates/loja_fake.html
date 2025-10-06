@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block css %}
+<!-- Bootstrap CSS local -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+<!-- Font Awesome CSS local -->
+<link rel="stylesheet" href="{{ url_for('static', filename='vendor/fontawesome/css/all.min.css') }}">
+
+<style>
+    .card {
+        border-radius: 12px;
+        transition: transform 0.2s ease;
+    }
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">🛒 Loja Fake</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('fake.criar_user')}}">Criar Conta</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('fake.login_fake') }}">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('fake.criar_produtos') }}">Vender</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('fake.buscar_produtos') }}">Promoções</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h1 class="mb-4">🛍 Nossa Loja</h1>
+
+    {% for categoria, itens in categorias.items() %}
+        {% if itens %}
+        <h3 class="mt-4">{{ categoria }}</h3>
+        <div class="row">
+            {% for item in itens %}
+            <div class="col-md-3 mb-4">
+                <div class="card text-center p-3 shadow-sm">
+                    {% set nome = item.nome.lower() %}
+                    {% if 'camisa' in nome %}
+                        <i class="fa-solid fa-shirt fa-3x mb-3" style="color:#2196f3;"></i>
+                    {% elif 'calca' in nome %}
+                        <i class="fa-solid fa-person-walking fa-3x mb-3" style="color:#009688;"></i>
+                    {% elif 'mala' in nome %}
+                        <i class="fa-solid fa-suitcase fa-3x mb-3" style="color:#795548;"></i>
+                    {% elif 'iphone' in nome or 'telemovel' in nome %}
+                        <i class="fa-solid fa-mobile-screen-button fa-3x mb-3" style="color:#9c27b0;"></i>
+                    {% elif categoria == 'Vestuario' %}
+                        <i class="fa-solid fa-shirt fa-3x mb-3" style="color:#2196f3;"></i>
+                    {% elif categoria == 'Comida' %}
+                        <i class="fa-solid fa-utensils fa-3x mb-3" style="color:#4caf50;"></i>
+                    {% elif categoria == 'Eletronicos' %}
+                        <i class="fa-solid fa-tv fa-3x mb-3" style="color:#9c27b0;"></i>
+                    {% else %}
+                        <i class="fa-solid fa-store fa-3x mb-3" style="color:#ff9800;"></i>
+                    {% endif %}
+                    <h5>{{ item.nome }}</h5>
+                    <p class="text-muted">{{ item.preco }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- Bootstrap JS local (bundle com Popper) -->
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+{% endblock %}

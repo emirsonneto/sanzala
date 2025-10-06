@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='redifinir.css')}}">
+{% endblock %}
+{% block content %}
+<div class="login-box">
+  <a href="index.html" class="back-btn">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+  <h2><i class="bi bi-box-arrow-in-right"></i> Recuperar Conta</h2>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+      {{ form.senha.label(class="form-label") }}
+      {{ form.senha(class="form-control", placeholder="********")}}
+    </div>
+
+    <div class="mb-3">
+      {{ form.csenha.label(class="form-label") }}
+      {{ form.csenha(class="form-control", placeholder="********") }}
+    </div>
+    {{ form.submit(class="btn btn-login") }}
+    <p class="text-center mt-3">
+      <small>
+       <a href="{{ url_for('auth.registro') }}">Criar conta</a>
+      </small>
+    </p>
+  </form>
+</div>
+{% endblock %}

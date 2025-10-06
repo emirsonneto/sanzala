@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2>🔓 Login Vulnerável a SQLi</h2>
+  <form method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="text" name="email" class="form-control" placeholder="Email"><br>
+    <input type="password" name="senha" class="form-control" placeholder="Senha"><br>
+    <button type="submit" class="btn btn-danger">Entrar</button>
+  </form>
+
+  {% if error %}
+    <div class="alert alert-danger mt-3">{{ error }}</div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='timbuktu.css') }}">
+{% endblock %}
+{% block content %}
+<h1>👑 Missão: O Eco de Gana</h1>
+
+<p>
+  Em tempos antigos, muito antes dos mapas modernos, havia um reino dourado: <strong>Gana</strong>.  
+  Seus reis eram mestres do comércio, da sabedoria... e da lógica.  
+</p>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Ghana_empire_map.png/600px-Ghana_empire_map.png" alt="Mapa do Império de Gana" class="avatar">
+
+<div class="fala">
+  “Sou <strong>Wagadou</strong>, guardião do Códice de Ouro. Hoje, vamos desvendar os primeiros feitiços do JavaScript — a linguagem que dá vida aos sites.”
+</div>
+
+<h2>🧠 Etapa 1: O que é JavaScript?</h2>
+<p>
+  HTML é o corpo. CSS é a roupa. <strong>JavaScript é o cérebro</strong>.  
+  Ele permite que páginas <em>pensem</em> e <em>reajam</em>. Veja este exemplo:
+</p>
+
+<div class="pre-box">
+  &lt;button onclick="alert('Bem-vindo ao Reino de Gana!')"&gt;Clique-me&lt;/button&gt;
+</div>
+
+<p>
+  Quando clicas no botão, aparece uma mensagem. Isso é feito com <code>alert()</code>.
+</p>
+
+<div class="exercicio">
+  <strong>Exercício 1:</strong> Escreve um botão que diga “Olá Gana!” quando clicado:
+  <input id="res1" placeholder='Ex: <button onclick="alert(&quot;Olá Gana!&quot;)">Clica aqui</button>'>
+  <button onclick="verificaJS1('res1', 'feedback1')">Confirmar</button>
+  <div id="feedback1" class="resultado"></div>
+</div>
+
+<h2>🔢 Etapa 2: Variáveis</h2>
+<p>
+  Variáveis são como <strong>caixinhas</strong> que guardam informações.  
+  Exemplo:
+</p>
+
+<div class="pre-box">
+  &lt;script&gt;<br>
+  let ouro = 100;<br>
+  alert("Tens " + ouro + " peças de ouro!");<br>
+  &lt;/script&gt;
+</div>
+
+<p>
+  O código acima guarda o número 100 dentro de uma variável chamada <code>ouro</code>.
+</p>
+
+<div class="exercicio">
+  <strong>Exercício 2:</strong> Crie uma variável chamada <code>rei</code> com seu nome e mostre num <code>alert</code>:
+  <input id="res2" placeholder='Ex: <script>let rei="Kwame"; alert(rei);</script>'>
+  <button onclick="verificaJS2('res2', 'feedback2')">Confirmar</button>
+  <div id="feedback2" class="resultado"></div>
+</div>
+
+<h2>🔄 Etapa 3: Condições</h2>
+<p>
+  JavaScript também pode <strong>tomar decisões</strong>. Exemplo:
+</p>
+
+<div class="pre-box">
+  &lt;script&gt;<br>
+  let ouro = 50;<br>
+  if (ouro >= 100) {<br>
+    alert("És rico!");<br>
+  } else {<br>
+    alert("Acumula mais ouro!");<br>
+  }<br>
+  &lt;/script&gt;
+</div>
+
+<p>
+  Se a variável <code>ouro</code> for maior ou igual a 100, mostra uma mensagem. Senão, mostra outra.
+</p>
+
+<div class="exercicio">
+  <strong>Exercício 3:</strong> Faça um <code>if</code> que diga "Sou rei!" se <code>cargo</code> for "rei":
+  <input id="res3" placeholder='Ex: <script>let cargo="rei"; if(cargo=="rei"){ alert("Sou rei!"); }</script>'>
+  <button onclick="verificaJS3('res3', 'feedback3')">Confirmar</button>
+  <div id="feedback3" class="resultado"></div>
+</div>
+
+<div class="fala">
+  “Você dominou os primeiros encantos. JavaScript agora corre em tuas veias como os rios de ouro do Sahel.  
+  A próxima missão revelará funções, interações e... segredos.<a href="{{ url_for('desafio_bp.timbuktu')}}" class="btn btn-sm btn-outline-light">Aqui</a>”
+</div>
+
+<!-- FLAG OCULTA -->
+<!-- 3c0{gan4_loja_dos_scriptos} -->
+
+<script>
+function verificaJS1(id, feedbackId) {
+  const val = document.getElementById(id).value.toLowerCase();
+  const ok = val.includes('<button') && val.includes('onclick') && val.includes('alert') && val.includes('olá gana');
+  const f = document.getElementById(feedbackId);
+  f.innerHTML = ok ? "✅ Correto! O botão funciona!" : "❌ Algo está errado. Use alert e o texto correto.";
+  f.className = ok ? "resultado correto" : "resultado errado";
+}
+
+function verificaJS2(id, feedbackId) {
+  const val = document.getElementById(id).value.toLowerCase();
+  const ok = val.includes('let') && val.includes('rei') && val.includes('alert');
+  const f = document.getElementById(feedbackId);
+  f.innerHTML = ok ? "✅ Variável criada com sucesso!" : "❌ Verifique a sintaxe da variável e do alert.";
+  f.className = ok ? "resultado correto" : "resultado errado";
+}
+
+function verificaJS3(id, feedbackId) {
+  const val = document.getElementById(id).value.toLowerCase();
+  const ok = val.includes('if') && val.includes('cargo') && val.includes('==') && val.includes('alert');
+  const f = document.getElementById(feedbackId);
+  f.innerHTML = ok ? "✅ Ótimo! Condição aplicada!" : "❌ Corrija a estrutura do if.";
+  f.className = ok ? "resultado correto" : "resultado errado";
+}
+</script>
+{% endblock %}

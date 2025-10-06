@@ -1,0 +1,218 @@
+:root {
+  --cor-fundo: #0a0a0a;
+  --cor-texto: #e9fefc;
+  --cor-painel: #141414;
+
+  --verde-suave: #103d33;
+  --vermelho-suave: #3d1b1b;
+  --azul-suave: #1b2d3d;
+  --roxo-suave: #2b1b3d;
+
+  --borda-verde: #00ffaa;
+  --borda-vermelha: #ff4f4f;
+  --borda-azul: #4fcaff;
+  --borda-roxa: #c17dff;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+h2 {
+  text-align: center;
+  color: var(--borda-verde);
+  margin: 2rem 0 1rem;
+}
+
+.filter-box {
+  background: var(--cor-painel);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.07);
+  margin-bottom: 2rem;
+}
+
+.form-select {
+  background-color: #000;
+  color: var(--cor-texto);
+  border: 1px solid var(--borda-verde);
+}
+
+.form-select:focus {
+  border-color: var(--borda-azul);
+  box-shadow: 0 0 6px var(--borda-azul);
+}
+
+.card-missao {
+  border-radius: 14px;
+  padding: 1.2rem;
+  position: relative;
+  overflow: hidden;
+  color: var(--cor-texto);
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.06);
+  transition: 0.3s ease;
+}
+
+.card-missao:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 14px rgba(0, 255, 170, 0.1);
+}
+
+.card-missao h5 {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.text-truncate-multiline {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* máximo 4 linhas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-missao p {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;      /* Número de linhas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3.2em;          /* Altura equivalente a 2 linhas */
+  line-height: 1.6em; 
+}
+
+.categoria-verde {
+  background-color: var(--verde-suave);
+}
+
+.categoria-vermelho {
+  background-color: var(--vermelho-suave);
+}
+
+.categoria-azul {
+  background-color: var(--azul-suave);
+}
+
+.categoria-roxo {
+  background-color: var(--roxo-suave);
+}
+
+/* Bolinha decorativa no canto inferior direito */
+.decor-ball {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  bottom: 10px;
+  right: 10px;
+  border: 2px solid white;
+}
+
+.verde .decor-ball {
+  border-color: var(--borda-verde);
+}
+
+.vermelho .decor-ball {
+  border-color: var(--borda-vermelha);
+}
+
+.azul .decor-ball {
+  border-color: var(--borda-azul);
+}
+
+.roxo .decor-ball {
+  border-color: var(--borda-roxa);
+}
+.categoria-laranja {
+  background-color: #FFA500; /* laranja padrão */
+  color: white;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+.pagination .page-link {
+  background-color: var(--cor-painel);
+  color: var(--cor-texto);
+  border: 1px solid var(--borda-verde);
+}
+
+.pagination .page-link:hover {
+  background-color: var(--borda-verde);
+  color: #000;
+}
+footer {
+  margin-top: 4rem;
+  background-color: #111;
+  padding: 3rem 1rem 1rem;
+  color: #ccc;
+}
+
+.footer-section h6 {
+  color: var(--borda-verde);
+  margin-bottom: 1rem;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-section li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-section i {
+  margin-right: 0.5rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid #444;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.categoria-dourado {
+  background-color: #bfa230;  /* ou outro tom de dourado */
+  color: white;
+}
+
+.categoria-branco {
+  background-color: #f8f9fa;  /* quase branco */
+  color: #212529;             /* texto escuro para contraste */
+}
+
+.back-icon {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 28px;
+    color: #333;
+    text-decoration: none;
+    z-index: 1000;
+    transition: color 0.2s;
+}
+.back-icon:hover {
+    color: #007bff;
+}

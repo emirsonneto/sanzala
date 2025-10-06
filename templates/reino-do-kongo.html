@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='kongo.css') }}"> 
+{% endblock %}
+{% block content %}
+<h1>🧩 Missão Cripto 0: A Palavra ao Contrário</h1>
+
+<p>
+No Reino do Kongo, o jovem aprendiz <strong>Kiala</strong> encontrou uma pedra estranha com letras invertidas.  
+O velho mestre <strong>Mbuta Zemba</strong> sussurra: "Nem todo segredo precisa de feitiço. Às vezes, basta virar a cabeça..."
+</p>
+
+<div class="challenge">
+  <strong>Mensagem:</strong> <code>ODNAREK</code>
+</div>
+
+<label for="resposta1">Tua resposta:</label><br>
+<input type="text" id="resposta1" placeholder="Escreve a palavra correta"><br><br>
+<button onclick="verificarResposta1()">Verificar</button>
+<p id="feedback1"></p>
+
+<hr>
+
+<h2>Codifica tua própria mensagem:</h2>
+<input type="text" id="mensagemOriginal" placeholder="Ex: segredo">
+<button onclick="inverter()">Inverter</button>
+<p><strong>Resultado:</strong> <span id="resultadoInverso"></span></p>
+
+<h1>🐘 Missão Cripto 1: O Código Emoji do Kongo</h1>
+
+<p>
+Após resolver o enigma reverso, Kiala encontra uma tira de couro com símbolos estranhos.  
+Mbuta Zemba explica: "No Kongo, os mensageiros reais usavam emojis secretos para passar mensagens entre vilas."
+</p>
+
+<h2>📕 Código Emoji Secreto</h2>
+<p>
+<ul>
+  <li>E = 🍎</li>
+  <li>C = 🐘</li>
+  <li>O = 🥁</li>
+  <li>R = 🌍</li>
+</ul>
+</p>
+
+<h2>🧠 Desafio Emoji:</h2>
+<p><strong>Mensagem:</strong> <code>🐘🥁🌍🌍🍎</code></p>
+
+<label for="respostaEmoji">Tua resposta:</label><br>
+<input type="text" id="respostaEmoji" placeholder="Ex: cade"><br><br>
+<button onclick="verificarEmoji()">Verificar</button>
+<p id="feedbackEmoji"></p>
+
+<hr>
+
+<h2>Codifica a tua:</h2>
+<input type="text" id="entradaEmoji" placeholder="Ex: abce">
+<button onclick="codificarEmoji()">Codificar</button>
+<p><strong>Mensagem Emoji:</strong> <span id="emojiResultado"></span></p>
+
+<script>
+function verificarResposta1() {
+  const r = document.getElementById('resposta1').value.toLowerCase().trim();
+  const feedback = document.getElementById('feedback1');
+  if (r === "kerando") {
+    feedback.innerText = "✅ Correto! 'ODNAREK' ao contrário é 'KERANDO'.";
+    feedback.style.color = "green";
+  } else {
+    feedback.innerText = "❌ Tenta outra vez.";
+    feedback.style.color = "red";
+  }
+}
+
+function inverter() {
+  const t = document.getElementById('mensagemOriginal').value;
+  document.getElementById('resultadoInverso').innerText = t.split('').reverse().join('');
+}
+  function verificarEmoji() {
+    const r = document.getElementById('respostaEmoji').value.toLowerCase().trim();
+    const feedback = document.getElementById('feedbackEmoji');
+    if (r === "corre") {
+      feedback.innerText = "✅ Perfeito! Mensagem decifrada com sucesso.";
+      feedback.style.color = "green";
+    } else {
+      feedback.innerText = "❌ Hmm... tenta de novo. Lembra da tabela!";
+      feedback.style.color = "red";
+    }
+  }
+
+  function codificarEmoji() {
+    const mapa = { e: '🍎', c: '🐘', o: '🥁', r: '🌍' };
+    const texto = document.getElementById('entradaEmoji').value.toLowerCase();
+    let codificado = "";
+    for (let i = 0; i < texto.length; i++) {
+      codificado += mapa[texto[i]] || texto[i];
+    }
+    document.getElementById('emojiResultado').innerText = codificado;
+  }
+</script>
+{% endblock %}

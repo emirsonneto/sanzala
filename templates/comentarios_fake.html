@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class ="container">
+<h1>Comentários</h1>
+
+<form method="POST">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <input name="nome" placeholder="Teu nome" class="form-control" required>
+  <textarea name="comentario" class="form-control" placeholder="Escreve aqui" required></textarea>
+  <button type="submit">Comentar</button>
+</form>
+
+<hr>
+
+{% for c in comentarios %}
+  <div class="bg bg-info">
+    <strong>{{ c.nome | safe  }}:</strong>
+      <!-- XSS acontece aqui -->
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
+

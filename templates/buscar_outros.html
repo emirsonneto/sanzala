@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2>🔎 Buscar Outros Produtos (com falhas SQLi e XSS Refletido)</h2>
+
+  <form method="GET">
+    <input type="text" name="termo" class="form-control" placeholder="Digite o nome" value="{{ termo }}">
+    <button class="btn btn-primary mt-2">Buscar</button>
+  </form>
+
+  {% if termo %}
+    <div class="alert alert-info mt-3">
+      Você buscou por: {{ termo | safe }}
+    </div>
+  {% endif %}
+
+  {% if erro %}
+    <div class="alert alert-danger mt-3">{{ erro }}</div>
+  {% endif %}
+
+  {% if resultado %}
+    <h4 class="mt-4">Nenhum produto encontrado:</h4>
+    <ul class="list-group">
+      {% for r in resultado %}
+        <li class="list-group-item">
+         {{ r.nome }}-{{ r.preco }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% elif resultado is not none and not erro %}
+    <div class="alert alert-warning mt-4">Nenhum Produto encontrado.</div>
+  {% endif %}
+</div>
+ <div class=" container mb-6 alert alert-info mt-3">
+      {%  if termo == "<script>alert(document.cookie)</script>" %}
+      <p>Segredo do cookie: 3c0{parabens_pela_engenharia_social}:)}</div>
+        {% else %}
+        <p>Segredo do cookie: 3c0{parabens_deu_certo?}</div>
+        {% endif %}
+    </div>
+<div class="mt-4">
+  <a href="{{ url_for('fake.buscar_produtos') }}" class="btn btn-primary">buscar outros</a>
+</div>
+<div class="mt-4">
+  <a href="{{ url_for('fake.loja') }}" class="btn btn-primary">voltar</a>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,336 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+{% endblock %}
+{% block content %}
+<nav class="navbar navbar-expand-lg" style="background-color: #0a0a0a; border-bottom: 2px solid #00FFAE;">
+  <div class="container align-items-center">
+
+    <!-- Logo SVG -->
+    <a class="navbar-brand d-flex align-items-center" href="/">
+      <svg width="50" height="50" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="70" cy="70" r="66" fill="none" stroke="#00FFAE" stroke-width="3.5"/>
+        <text x="70" y="90" text-anchor="middle" font-size="125" font-family="Segoe UI Black, Arial Black, sans-serif" fill="#00FFAE" dominant-baseline="middle">S</text>
+        <defs>
+          <path id="curva-superior" d="M 35,32 A 47,47 0 0,1 105,32" />
+        </defs>
+        <text font-size="10.5" font-family="Arial Black, sans-serif" fill="#00FFAE" letter-spacing="2">
+          <textPath href="#curva-superior" startOffset="50%" text-anchor="middle">SANZALA</textPath>
+        </text>
+      </svg>
+    </a>
+
+    <!-- Direita -->
+    <div class="ms-auto d-flex align-items-center gap-3">
+      {% if current_user.is_authenticated %}
+        <!-- Links especiais -->
+        <a href="{{ url_for('auth.blog') }}" class="text-light text-decoration-none fw-semibold">🏘️ Aldeia</a>
+        <a href="{{ url_for('desafio_bp.lista_desafios') }}" class="text-light text-decoration-none fw-semibold">🎯 Missões</a>
+
+        <!-- Avatar e nome -->
+      <div class="user-card d-flex flex-column align-items-center position-relative">
+        <div class="position-relative">
+          <!-- Avatar -->
+          <img src="{{ current_user.avatar or url_for('static', filename='default-avatar.png') }}"
+               class="rounded-circle user-avatar"
+               width="48" height="48" alt="Avatar">
+
+          <!-- Pontos (sem ícone) -->
+          <span class="badge-pontos">
+            {{ current_user.pontos or 0 }}
+          </span>
+        </div>
+
+        <!-- Nome próximo ao avatar -->
+        <small class="user-nome mt-0">
+          {{ current_user.nome or current_user.username }}
+        </small>
+      </div>
+
+        <!-- Botão sair -->
+       
+      {% else %}
+        <!-- Não autenticado -->
+        <a href="{{ url_for('auth.registro') }}" class="text-light text-decoration-none" style="font-weight: 500;">
+          Registro
+        </a>
+        <a href="{{ url_for('auth.login') }}" class="btn btn-sm px-3 text-dark" style="background-color: #00FFAE; font-weight: bold;">
+          <i class="fas fa-user-shield me-1"></i> Login
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+  <div class="container">
+    <h1>Sanzala</h1>
+    <p>"No futuro a melhoria foi apagada. Mas uma vila sobreviveu, não em terra, mas em código. Uma sanzala , onde memórias resistem, escondidas em linhas, sons e sombras. Tu és chamado por guardião  encontre os ecos desvende o passado.</p>
+  </div>
+</section>
+
+<!-- BLOCO TÍTULO + 3 CARDS + LADO DIREITO -->
+<section class="container my-5">
+  <h2 class="section-title">Explora as Dimensões do Passado</h2>
+  <div class="row gx-3 gy-4 align-items-stretch">
+    <div class="col-lg-9">
+      <div class="row gx-3 gy-3">
+        <div class="col-md-4">
+          <div class="feature-card text-center">
+            <div class="feature-icon"><i class="fas fa-dragon"></i></div>
+            <h5>Kemet</h5>
+            <p>Sabedoria , disciplina e arte.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card text-center">
+            <div class="feature-icon"><i class="fas fa-ankh"></i></div>
+            <h5>Tradiçoes</h5>
+            <p>Raízes, máscaras, sabedoria oral, engenhosidade e resistência.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card text-center">
+            <div class="feature-icon"><i class="fas fa-hammer"></i></div>
+            <h5>Leis e Justiça</h5>
+            <p>Runas, mitologia, estruturas tribais e honradez.</p>
+          </div>
+        </div>
+      </div>
+      <div class="terminal-card">
+          <div class="terminal-title"> Terminal Guardiao </div>
+          <div><i class="fas fa-terminal"></i> <input class="terminal-input" type="text"><span class="cursor"></span></div>
+        </div>
+      </div>
+
+    <div class="col-lg-3">
+      <div class="mission-list">
+        <h5><i class="fas fa-flag-checkered"></i> Missões Ativas</h5>
+        <div class="mission-item">
+          <a href="{{ url_for('desafio_bp.rift_html') }}" class=" text-decoration-none"> 🧿 Africa o Berco da Humanidade <a/>
+        </div>
+        <div class="mission-item"><a href="{{ url_for('desafio_bp.rift_html') }}" class=" text-decoration-none">🧿 As corrente eternas<a/></div>
+        <div class="mission-item">🧿 Mapear linhagens culturais</div>
+        <div class="text-center mt-2">
+          <button class="btn btn-outline-light btn-sm">Ver mais</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <section class="container my-5">
+  <h2 class="section-title">Relíquias Codificadas</h2>
+  <div class="row g-4">
+
+    <!-- CARD 1 -->
+    <div class="col-md-3 col-sm-6">
+      <div class="feature-card text-center position-relative" style="background: linear-gradient(145deg, #0f0a0a, #1a0f0f); box-shadow: 0 0 14px #ff636344; overflow: hidden;">
+        <div class="position-absolute bottom-0 end-0" style="width: 20px; height: 20px; border: 2px solid #ff636355; border-radius: 50%; margin: 10px;"></div>
+        <i class="fas fa-eye fa-2x mb-2" style="color: #ff6363;"></i>
+        <h6 class="fw-bold">Olho de Aksum</h6>
+        <p class="small">Guardião esquecido que observava as constelações para prever invasões do mundo oculto.</p>
+        <div class="text-muted small mt-2"><i class="fas fa-star-of-david me-1"></i> Visão Proibida</div>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="col-md-3 col-sm-6">
+      <div class="feature-card text-center position-relative" style="background: linear-gradient(145deg, #0a0f0f, #121212); box-shadow: 0 0 14px #66ccff44; overflow: hidden;">
+        <div class="position-absolute bottom-0 end-0" style="width: 20px; height: 20px; border: 2px solid #66ccff55; border-radius: 50%; margin: 10px;"></div>
+        <i class="fas fa-fingerprint fa-2x mb-2" style="color: #66ccff;"></i>
+        <h6 class="fw-bold">Impressão de Nyoka</h6>
+        <p class="small">Marcação biométrica ancestral encontrada em cavernas protegidas por cânticos de cifra.</p>
+        <div class="text-muted small mt-2"><i class="fas fa-lock me-1"></i> Genoma Guardado</div>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="col-md-3 col-sm-6">
+      <div class="feature-card text-center position-relative" style="background: linear-gradient(145deg, #0f0a0a, #1a0f0f); box-shadow: 0 0 14px #ffaa3f44; overflow: hidden;">
+        <div class="position-absolute bottom-0 end-0" style="width: 20px; height: 20px; border: 2px solid #ffaa3f55; border-radius: 50%; margin: 10px;"></div>
+        <i class="fas fa-sun fa-2x mb-2" style="color: #ffaa3f;"></i>
+        <h6 class="fw-bold">Códice Solar</h6>
+        <p class="small">Fragmento queimado de um diário que mapeava o tempo por meio de sombras em ruínas rituais.</p>
+        <div class="text-muted small mt-2"><i class="fas fa-solar-panel me-1"></i> Tempo Gravado</div>
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="col-md-3 col-sm-6">
+      <div class="feature-card text-center position-relative" style="background: linear-gradient(145deg, #0f0f0f, #1c1c1c); box-shadow: 0 0 14px #00ffaa44; overflow: hidden;">
+        <div class="position-absolute bottom-0 end-0" style="width: 20px; height: 20px; border: 2px solid #00ffaa55; border-radius: 50%; margin: 10px;"></div>
+        <i class="fas fa-bug fa-2x mb-2" style="color: #00ffaa;"></i>
+        <h6 class="fw-bold">Inseto de shara</h6>
+        <p class="small">Criatura mitológica forjada em circuitos, capaz de atravessar redes esquecidas do ciberespaço tribal.</p>
+        <div class="text-muted small mt-2"><i class="fas fa-microchip me-1"></i> Parasita Binário</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="container my-5">
+  <h2 class="section-title">Portais de Sabedoria</h2>
+  <div class="row g-4">
+    <!-- CARD 1 -->
+    <div class="col-md-6">
+      <div class="feature-card p-4 position-relative" style="background: #101111; box-shadow: 0 0 18px #00ffae44; border: 1px solid #1affd566;">
+        <div class="d-flex align-items-center mb-3">
+          <div class="me-3">
+            <i class="fas fa-scroll fa-2x text-warning"></i>
+          </div>
+          <div>
+            <h5 class="mb-0" style="color: var(--primary-color)">Grimório Digital</h5>
+            <small style="color: #b6f0e8">Fragmentos de conhecimento antigo.</small>
+          </div>
+        </div>
+        <p class="mt-3" style="color: var(--primary-color)">Estes arquivos são protegidos por enigmas tribais que só guardiões podem decifrar.</p>
+        <div class="position-absolute bottom-0 end-0 m-2" style="width: 14px; height: 14px; background-color: #00ffae; border-radius: 50%;"></div>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="col-md-6">
+      <div class="feature-card p-4 position-relative" style="background: #131214; box-shadow: 0 0 18px #ff636355; border: 1px solid #ff636355;">
+        <div class="d-flex align-items-center mb-3">
+          <div class="me-3">
+            <i class="fas fa-key-skeleton fa-2x text-danger"></i>
+          </div>
+          <div>
+            <h5 class="mb-0" style="color: #ff6363;">Chave de Sangue</h5>
+            <small style="color: #f8bebe">Rituais digitais e a linhagem dos ancestrais guardam os acessos esquecidos.</small>
+          </div>
+        </div>
+        <p class="mt-3" style="color: #ffbbbb;">Acesso restrito. Só o que sangra código pode abrir os portões da memória.</p>
+        <div class="position-absolute bottom-0 end-0 m-2" style="width: 14px; height: 14px; background-color: #ff6363; border-radius: 50%;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="py-5" style="background: linear-gradient(145deg, #050505, #101010); color: #e0fdf4;">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+
+      <!-- LOGO COM ENFEITES -->
+      <div class="col-lg-5 text-center" data-aos="fade-up">
+        <div style="background: radial-gradient(circle at center, #00FFAE22, transparent 70%); border-radius: 50%; padding: 2rem;">
+          <svg width="180" height="180" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="70" cy="70" r="66" fill="none" stroke="#00FFAE" stroke-width="4"/>
+            <text x="70" y="90" text-anchor="middle" font-size="110" font-family="Segoe UI Black" fill="#00FFAE" dominant-baseline="middle">S</text>
+            <defs><path id="curva" d="M 35,32 A 47,47 0 0,1 105,32"/></defs>
+            <text font-size="10" font-family="Arial Black" fill="#00FFAE" letter-spacing="1">
+              <textPath href="#curva" startOffset="50%" text-anchor="middle">SANZALA</textPath>
+            </text>
+          </svg>
+        </div>
+        <h3 class="mt-4 text-success fw-bold">Aldeia de Código e Cultura</h3>
+      </div>
+
+      <!-- BLOCOS ARTÍSTICOS DE CONTEÚDO -->
+      <div class="col-lg-7">
+        <div class="row g-3">
+          <!-- Missão -->
+          <div class="col-md-6" data-aos="zoom-in">
+            <div class="p-4 rounded-4 shadow-sm" style="background: #111; border-left: 4px solid #00ffae;">
+              <h5 class="text-info"><i class="fas fa-bullseye me-2"></i>Missão</h5>
+              <p class="small mb-0">Reconectar mentes africanas à ancestralidade através do código.</p>
+            </div>
+          </div>
+          <!-- Visão -->
+          <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="p-4 rounded-4 shadow-sm" style="background: #111; border-left: 4px solid #00e0ff;">
+              <h5 class="text-primary"><i class="fas fa-eye me-2"></i>Visão</h5>
+              <p class="small mb-0">Criar uma aldeia digital de resistência, liberdade e sabedoria.</p>
+            </div>
+          </div>
+          <!-- Objetivos -->
+          <div class="col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="p-4 rounded-4 shadow-sm" style="background: #111; border-left: 4px solid #ffa600;">
+              <h5 class="text-warning"><i class="fas fa-list-check me-2"></i>Objetivos</h5>
+              <ul class="small mb-0 ps-3">
+                <li>Despertar pensamento crítico</li>
+                <li>Valorizar raízes culturais</li>
+                <li>Construir comunidade global</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Regulamentos -->
+          <div class="col-md-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="p-4 rounded-4 shadow-sm" style="background: #111; border-left: 4px solid #ff4f4f;">
+              <h5 class="text-danger"><i class="fas fa-shield-alt me-2"></i>Regulamentos</h5>
+              <ul class="small mb-0 ps-3">
+                <li>Respeito mútuo</li>
+                <li>Sem vazamento de flags</li>
+                <li>Sem ataques ilegítimos</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Valores -->
+          <div class="col-12" data-aos="fade-up" data-aos-delay="400">
+            <div class="p-4 rounded-4 shadow-sm" style="background: #111; border-left: 4px solid #9c27b0;">
+              <h5 class="text-light"><i class="fas fa-gem me-2"></i>Valores</h5>
+              <p class="small mb-0">
+                Liberdade, ancestralidade, justiça, criatividade, autonomia e solidariedade tecnológica.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #0d0d0d; color: #e0fdf4; padding-top: 2rem;">
+  <div class="container text-center mb-4">
+    <!-- LOGO SVG CENTRALIZADA -->
+    <svg width="100" height="100" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="70" cy="70" r="66" fill="none" stroke="#00FFAE" stroke-width="3.5"/>
+      <text x="70" y="90" text-anchor="middle" font-size="110" font-family="Segoe UI Black, Arial Black, sans-serif" fill="#00FFAE" dominant-baseline="middle">S</text>
+      <defs><path id="curva-footer" d="M 35,32 A 47,47 0 0,1 105,32"/></defs>
+      <text font-size="10" font-family="Arial Black, sans-serif" fill="#00FFAE" letter-spacing="2">
+        <textPath href="#curva-footer" startOffset="50%" text-anchor="middle">SANZALA</textPath>
+      </text>
+    </svg>
+    <p class="mt-2 small text-muted">Guardioes de Memorias</p>
+  </div>
+
+  <!-- COLUNAS -->
+  <div class="container">
+    <div class="row text-center text-md-start">
+      <div class="col-md-4 footer-section mb-4">
+        <h6><i class="bi bi-link-45deg"></i> Links Úteis</h6>
+        <ul class="list-unstyled">
+          <li><a href="" class="text-decoration-none text-light">Início</a></li>
+          <li><a href="{{url_for('desafio_bp.lista_desafios') }}" class="text-decoration-none text-light">Missões</a></li>
+          <li><a href="{{url_for('auth.blog') }}" class="text-decoration-none text-light">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-section mb-4">
+        <h6><i class="bi bi-info-circle"></i> Sobre a Sanzala</h6>
+        <ul class="list-unstyled">
+          <li><a href="/historia" class="text-decoration-none text-light">História</a></li>
+          <li><a href="/historia" class="text-decoration-none text-light">Objetivos</a></li>
+          <li><a href="/historia" class="text-decoration-none text-light">Equipe</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-section mb-4">
+        <h6><i class="bi bi-share-fill"></i> Social</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-decoration-none text-light"><i class="bi bi-discord"></i> Discord</a></li>
+          <li><a href="#" class="text-decoration-none text-light"><i class="bi bi-twitter"></i> Twitter</a></li>
+          <li><a href="#" class="text-decoration-none text-light"><i class="bi bi-instagram"></i> Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RODAPÉ INFERIOR -->
+    <div class="footer-bottom text-center py-3 border-top border-secondary">
+      © 2025 A Sanzala. Todos os direitos reservados. |
+      <a href="{{ url_for('public.termos') }}" class="text-decoration-none text-secondary">Termos & Condições</a>
+    </div>
+  </div>
+</footer>
+{% endblock %}

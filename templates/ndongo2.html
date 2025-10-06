@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='ndongo.css') }}">
+<style>
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 5px 0;
+    background: #f9f9f9;
+    padding: 6px 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+  .radio-option input[type="radio"] {
+    accent-color: #5a3e85;
+    transform: scale(1.2);
+  }
+</style>
+{% endblock %}
+{% block content %}
+<h1>🛡️ Missão Ndongo – Parte 2: O Portal de Kabasa</h1>
+
+<p>
+  As pedras do antigo palácio de Kabasa escondem mais que poeira.  
+  <strong>Njinga Mbande</strong> deixou um teste para separar os sábios dos tolos:
+</p>
+
+<div class="fala">
+  “Somente quem entende o uso de escolhas, preferências e decisões poderá atravessar este portal.”
+</div>
+
+<h2>🔘 Escolha única: Radio</h2>
+<p>Use <code>&lt;input type="radio"&gt;</code> para selecionar apenas uma opção.</p>
+
+<div class="exercicio">
+  <label>Qual idioma falavam os Ngola?</label><br>
+  <label class="radio-option"><input type="radio" name="idioma" value="quimbundo"> Quimbundo</label>
+  <label class="radio-option"><input type="radio" name="idioma" value="kikongo"> Kikongo</label>
+  <label class="radio-option"><input type="radio" name="idioma" value="zulu"> Zulu</label><br>
+  <button onclick="verificaIdioma()">Confirmar</button>
+  <p id="feedbackIdioma" class="resultado"></p>
+</div>
+
+<h2>☑️ Múltiplas escolhas: Checkbox</h2>
+<p>Com <code>checkbox</code>, o jogador pode marcar várias opções.</p>
+
+<div class="exercicio">
+  <label>Quem já foi aliado de Ndongo?</label><br>
+  <input type="checkbox" name="aliado" value="matamba"> Matamba<br>
+  <input type="checkbox" name="aliado" value="portugal"> Portugal<br>
+  <input type="checkbox" name="aliado" value="espanha"> Espanha<br><br>
+  <button onclick="verificaAliados()">Confirmar</button>
+  <p id="feedbackAliado" class="resultado"></p>
+</div>
+
+<h2>⬇️ Lista suspensa: Select</h2>
+<p>Use <code>&lt;select&gt;</code> para criar uma lista de opções:</p>
+
+<div class="exercicio">
+  <label>Escolhe a capital real:</label><br>
+  <select id="selectCapital">
+    <option value="">-- Escolher --</option>
+    <option value="kabasa">Kabasa</option>
+    <option value="luanda">Luanda</option>
+    <option value="malanje">Malanje</option>
+  </select><br><br>
+  <button onclick="verificaCapital()">Confirmar</button>
+  <p id="feedbackCapital" class="resultado"></p>
+</div>
+
+<hr>
+
+<h2>🧩 Desafio Final: Portal de Login</h2>
+<p>
+  Um portal protege os arquivos secretos de Njinga. Para entrar, digita os dados corretos.
+  <br><em>(Dica: vê o código JavaScript)</em>
+</p>
+
+<form onsubmit="verificaLogin(); return false;">
+  <label>Usuário:</label><br>
+  <input type="text" id="usuario"><br>
+  <label>Senha:</label><br>
+  <input type="password" id="senha"><br><br>
+  <button type="submit">Entrar</button>
+</form>
+
+<p id="feedback" class="resultado"></p>
+
+<script>
+function verificaIdioma() {
+  const idiomaSelecionado = document.querySelector('input[name="idioma"]:checked');
+  const feedback = document.getElementById('feedbackIdioma');
+  if (idiomaSelecionado && idiomaSelecionado.value === "quimbundo") {
+    feedback.innerText = "✅ Correto! O Quimbundo era a língua dos Ngola.";
+    feedback.style.color = "green";
+  } else {
+    feedback.innerText = "❌ Errado! Relembra os ensinamentos do palácio...";
+    feedback.style.color = "red";
+  }
+}
+
+function verificaAliados() {
+  const selecionados = Array.from(document.querySelectorAll('input[name="aliado"]:checked')).map(el => el.value);
+  const feedback = document.getElementById('feedbackAliado');
+  const correto = selecionados.includes("matamba") && selecionados.includes("portugal") && selecionados.length === 2;
+
+  if (correto) {
+    feedback.innerText = "✅ Perfeito! Matamba e Portugal já foram aliados de Ndongo.";
+    feedback.style.color = "green";
+  } else {
+    feedback.innerText = "❌ Hmm... tem aliados errados ou em falta.";
+    feedback.style.color = "red";
+  }
+}
+
+function verificaCapital() {
+  const capital = document.getElementById("selectCapital").value;
+  const feedback = document.getElementById("feedbackCapital");
+  if (capital === "kabasa") {
+    feedback.innerText = "✅ Kabasa era o coração do poder de Ndongo!";
+    feedback.style.color = "green";
+  } else {
+    feedback.innerText = "❌ Não era essa. Escolhe com sabedoria.";
+    feedback.style.color = "red";
+  }
+}
+
+function verificaLogin() {
+  const u = document.getElementById('usuario').value.trim().toLowerCase();
+  const s = document.getElementById('senha').value.trim().toLowerCase();
+  const feedback = document.getElementById('feedback');
+
+  const userCorreto = "njinga";
+  const senhaCorreta = "kabasa";
+
+  if (u === userCorreto && s === senhaCorreta) {
+    feedback.innerText = "✅ Acesso concedido! As portas de Kabasa se abriram...";
+    feedback.style.color = "green";
+  } else {
+    feedback.innerText = "❌ Acesso negado. Lê os pergaminhos com atenção...";
+    feedback.style.color = "red";
+  }
+}
+</script>
+{% endblock %}

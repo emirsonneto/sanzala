@@ -1,0 +1,57 @@
+
+body {
+  background-color: #0a0a0a;
+  color: #e0e0e0;
+}
+.titulo {
+  text-align: center;
+  margin-top: 2rem;
+  color: #00ffaa;
+  text-shadow: 0 0 5px #00ffaa88;
+  font-size: 2rem;
+}
+
+.avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  padding: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.ancestral-avatar {
+  width: 90px;
+  height: 90px;
+  border: 3px dotted #00ffaa;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 10px #00ffaa33;
+  transition: transform 0.3s ease;
+}
+
+.ancestral-avatar:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 20px #00ffaa88;
+}
+
+.ancestral-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.6);
+}
+
+.ancestral-info {
+  text-align: center;
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  color: #00ffaa;
+  font-weight: bold;
+}
+
+.ancestral-info::after {
+  content: " ❓";
+  color: #00ffaa;
+}

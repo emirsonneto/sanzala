@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='kongo.css') }}">
+{% endblock %}
+{% block content %}
+
+<h1>🧱 Missão Cripto – Parte 4: A Muralha de Mbamba Kazul</h1>
+
+<p>
+  O Reino do Kongo erguia ao norte uma fortaleza conhecida como <strong>Mbamba Kazul</strong>.  
+  Ela escondia arquivos secretos dos Ngola e protegia as rotas de comércio.  
+  <strong>Teu papel:</strong> descobrir as rotas esquecidas, as senhas nos cabeçalhos e os arquivos perdidos.
+</p>
+
+<div class="fala">
+  “Olhos atentos não forçam portas. Procuram as que estão mal fechadas...”
+</div>
+## 🧭 Parte 1: O que é o <code>robots.txt</code>?
+
+<p>
+  Bots (como o Google) leem o arquivo <code>robots.txt</code> para saber o que podem acessar.<br>
+  Esse arquivo é como um **aviso na entrada da cidade**, com ordens sobre onde entrar ou não.
+</p>
+
+<div class="pre-box">
+<pre>
+User-agent: *
+Disallow: /admin
+</pre>
+</div>
+
+<p>👆 Isso diz: "<strong>Todos os bots</strong>, não entrem em <code>/admin</code>".</p>
+
+<div class="exercicio">
+  <strong>Exercício:</strong> Qual destes diretórios está proibido?<br>
+  <input id="resRobots" placeholder="Ex: /admin">
+  <button onclick="verificaRobots()">Confirmar</button>
+  <p id="feedbackRobots" class="resultado"></p>
+</div>
+
+---
+
+## 🗺️ Parte 2: O <code>sitemap.xml</code>
+
+<p>
+  Ao contrário do <code>robots.txt</code>, o <strong>sitemap.xml</strong> mostra todos os caminhos públicos que os bots podem visitar.  
+  É como um <strong>mapa real da cidade</strong> oferecido aos visitantes.
+</p>
+
+<div class="pre-box">
+<pre>
+https://exemplo.com/
+https://exemplo.com/artigos
+https://exemplo.com/contacto
+</pre>
+</div>
+
+<p>✔️ Ideal para ajudar os mecanismos de busca a explorar um site por completo.</p>
+
+<div class="exercicio">
+  <strong>Exercício:</strong> Um site quer que os bots explorem tudo. Qual arquivo ele deve ter?<br>
+  <input id="resSitemap" placeholder="Ex: sitemap.xml">
+  <button onclick="verificaSitemap()">Confirmar</button>
+  <p id="feedbackSitemap" class="resultado"></p>
+</div>
+
+---
+
+## 📨 Parte 3: Verbos HTTP
+
+<p>
+  Quando um navegador fala com o servidor, ele usa <strong>verbos HTTP</strong> — como um mensageiro com uma missão clara:
+</p>
+
+<ul>
+  <li><strong>GET</strong>: “Quero ver essa página”</li>
+  <li><strong>POST</strong>: “Estou te enviando informações”</li>
+  <li><strong>HEAD</strong>: “Mostra só os cabeçalhos”</li>
+  <li><strong>PUT</strong>: “Quero enviar ou atualizar um arquivo”</li>
+  <li><strong>DELETE</strong>: “Quero remover algo”</li>
+</ul>
+
+<div class="exercicio">
+  <strong>Exercício:</strong> Qual verbo HTTP é usado para enviar um formulário?<br>
+  <input id="resVerbo" placeholder="Ex: POST">
+  <button onclick="verificaVerbo()">Confirmar</button>
+  <p id="feedbackVerbo" class="resultado"></p>
+</div>
+
+---
+
+<div class="fala">
+  “Tu agora conheces os guardiões da cidade:  
+  <code>robots.txt</code> que nega, <code>sitemap.xml</code> que revela, e os verbos que comunicam.
+  Estás pronto para começar a verdadeira enumeração... <a href="{{ url_for('desafio_bp.robots')}}" class="btn btn-sm btn-outline-light">aqui</a>”
+</div>
+
+<script>
+function verificaRobots() {
+  const val = document.getElementById("resRobots").value.trim().toLowerCase();
+  const fb = document.getElementById("feedbackRobots");
+  if (val === "/admin") {
+    fb.innerText = "✅ Correto! Esse caminho estava proibido.";
+    fb.style.color = "green";
+  } else {
+    fb.innerText = "❌ Não é esse. Releia o código de acesso.";
+    fb.style.color = "red";
+  }
+}
+function verificaSitemap() {
+  const val = document.getElementById("resSitemap").value.trim().toLowerCase();
+  const fb = document.getElementById("feedbackSitemap");
+  if (val === "sitemap.xml") {
+    fb.innerText = "✅ Exato! Este é o mapa real das rotas públicas.";
+    fb.style.color = "green";
+  } else {
+    fb.innerText = "❌ Errado. Qual é o nome do arquivo com o mapa?";
+    fb.style.color = "red";
+  }
+}
+function verificaVerbo() {
+  const val = document.getElementById("resVerbo").value.trim().toLowerCase();
+  const fb = document.getElementById("feedbackVerbo");
+  if (val === "post") {
+    fb.innerText = "✅ Correto! Usamos POST para enviar dados.";
+    fb.style.color = "green";
+  } else {
+    fb.innerText = "❌ Não é esse. Relembra a função do verbo.";
+    fb.style.color = "red";
+  }
+}
+</script>
+
+{% endblock %}
+

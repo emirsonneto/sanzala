@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='rift_html.css') }}">
+{% endblock %}
+{% block content %}
+ <h1>🌍 Missão: O Chamado do Rift</h1>
+
+   <p>
+     O <strong>Vale do Rift</strong> é uma fenda geológica que se estende do Oriente Médio ao sudeste da África. Ali, nossos ancestrais deixaram suas primeiras marcas. Agora é sua vez.
+   </p>
+
+   <p>Vamos aprender HTML, a linguagem dos construtores digitais!</p>
+
+   <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Imhotep.png" alt="Imhotep" class="avatar">
+
+   <div class="fala">
+     “Saudações, jovem aprendiz. Sou <strong>Imhotep</strong>, arquiteto e escriba. Antigamente, construía templos com pedras. Hoje, construiremos conhecimento com código!”
+   </div>
+
+   <h2>📘 Etapa 1: Estrutura básica</h2>
+   <div class="pre-box">
+ &lt;!DOCTYPE html&gt;<br>
+ &lt;html&gt;<br>
+ &nbsp;&lt;head&gt;<br>
+ &nbsp;&nbsp;&lt;title&gt;Minha Página&lt;/title&gt;<br>
+ &nbsp;&lt;/head&gt;<br>
+ &nbsp;&lt;body&gt;<br>
+ &nbsp;&nbsp;Conteúdo visível aqui<br>
+ &nbsp;&lt;/body&gt;<br>
+ &lt;/html&gt;
+   </div>
+
+   <div class="exercicio">
+     <strong>Exercício 1:</strong> Qual é a tag usada para definir o título da aba no navegador?<br>
+     <input id="resposta1" placeholder="Ex: <title>">
+     <button onclick="verificarResposta('resposta1', '<title>', 'feedback1')">Confirmar</button>
+     <div id="feedback1" class="resultado"></div>
+   </div>
+
+   <h2>🧱 Etapa 2: Títulos com &lt;h1&gt;</h2>
+   <p>Use <code>&lt;h1&gt;</code> para criar um título de destaque. Exemplo:</p>
+   <div class="pre-box">
+ &lt;h1&gt;Descobrindo o Vale do Rift&lt;/h1&gt;
+   </div>
+   <div class="exercicio">
+     <strong>Exercício 2:</strong> Escreva sua própria tag de título com algo sobre o Rift:
+     <input id="resposta2" placeholder="Ex: <h1>O Berço da Humanidade</h1>">
+     <button onclick="verificarTag('resposta2', 'h1', 'feedback2')">Confirmar</button>
+     <div id="feedback2" class="resultado"></div>
+   </div>
+
+   <h2>📄 Etapa 3: Parágrafos com &lt;p&gt;</h2>
+   <p>Use <code>&lt;p&gt;</code> para escrever parágrafos. Exemplo:</p>
+   <div class="pre-box">
+ &lt;p&gt;O Vale do Rift é o lugar onde tudo começou.&lt;/p&gt;
+   </div>
+   <div class="exercicio">
+     <strong>Exercício 3:</strong> Escreva um parágrafo HTML sobre o Rift:
+     <input id="resposta3" placeholder="Ex: <p>Aprendi que o Rift é o berço da humanidade.</p>">
+     <button onclick="verificarTag('resposta3', 'p', 'feedback3')">Confirmar</button>
+     <div id="feedback3" class="resultado"></div>
+   </div>
+
+   <h2>🗨️ Etapa 4: Comentários em HTML</h2>
+   <p>Comentários são invisíveis no site, mas visíveis no código. Use <code>&lt;!-- comentário --&gt;</code>:</p>
+   <div class="pre-box">
+ &lt;!-- Este é um comentário que explica algo no código --&gt;
+   </div>
+
+<div class="exercicio">
+  <strong>Exercício 4:</strong> Escreva um comentário dizendo "Primeira missão":
+  <input id="resposta4" placeholder="Ex: <!-- Primeira missão -->">
+  <button onclick="verificarComentario('resposta4', 'Primeira missão', 'feedback4')">Confirmar</button>
+  <div id="feedback4" class="resultado"></div>
+</div>
+
+
+   <h2>🔧 Etapa 5: Atributos e tags abertas/fechadas</h2>
+   <p>Algumas tags possuem <strong>atributos</strong> — propriedades extras, como <code>src</code> ou <code>alt</code> em uma imagem:</p>
+   <div class="pre-box">
+ &lt;img src="imagem.jpg" alt="Descrição da imagem"&gt;
+   </div>
+   <p>
+     Nem toda tag precisa ser fechada. Algumas são chamadas de <strong>autofechadas</strong>, como <code>&lt;img&gt;</code> ou <code>&lt;br&gt;</code>. Já outras devem sempre abrir e fechar, como <code>&lt;p&gt;&lt;/p&gt;</code>.
+   </p>
+
+   <div class="fala">
+     “Muito bem! Você agora conhece os fundamentos. Está pronto para continuar sua jornada e aprender os mistérios do CSS.”
+   </div>
+
+   <!-- sua primeira flag abaixo "sempre olhe o codigo fonte (CTRL+U) " -->
+   <!-- 3c0{parabens_aldeao_a_sua_jornada_comecou} -->
+<h2>🔎 Etapa 6: Atributos HTML</h2>
+  <p>
+    Os <strong>atributos</strong> são usados para adicionar informações extras às tags. Eles ficam dentro da tag de abertura e seguem o formato:
+    <code>atributo="valor"</code>. Por exemplo:
+  </p>
+
+  <div class="pre-box">
+&lt;a href="https://example.com" target="_blank"&gt;Clique aqui&lt;/a&gt;
+  </div>
+
+  <ul>
+    <li><code>href</code> – define o link que será aberto.</li>
+    <li><code>target="_blank"</code> – faz o link abrir em uma nova aba.</li>
+    <li><code>alt</code> – descrição de uma imagem.</li>
+    <li><code>src</code> – define o caminho de uma imagem.</li>
+    <li><code>title</code> – mostra um texto ao passar o mouse sobre o elemento.</li>
+  </ul>
+
+  <div class="exercicio">
+    <strong>Exercício 5:</strong> Escreva uma tag de imagem com os atributos <code>src</code> e <code>alt</code>:<br>
+    <input id="resposta5" placeholder='Ex: <img src="sol.jpg" alt="O Sol">'>
+    <button onclick="verificarImg('resposta5', 'feedback5')">Confirmar</button>
+    <div id="feedback5" class="resultado"></div>
+  </div>
+
+  <div class="exercicio">
+    <strong>Exercício 6:</strong> Escreva um link que leva para "https://google.com" e abre em nova aba:<br>
+    <input id="resposta6" placeholder='Ex: <a href="https://google.com" target="_blank">Google</a>'>
+    <button onclick="verificarLink('resposta6', 'feedback6')">Confirmar</button>
+    <div id="feedback6" class="resultado"></div>
+  </div>
+
+  <h2>🧠 Etapa 7: Visualizando o código-fonte</h2>
+  <p>
+    Nem tudo está visível na página. Às vezes, os segredos estão escondidos no código HTML. Para ver o código-fonte de qualquer site:
+  </p>
+  <ul>
+    <li>🔍 Clique com o botão direito do mouse na página e selecione <strong>"Ver código-fonte"</strong> ou <strong>"Exibir código da página"</strong>.</li>
+    <li>🧠 Você também pode usar o atalho: <strong>Ctrl + U</strong> (Windows/Linux) ou <strong>Cmd + Option + U</strong> (Mac).</li>
+    <li>📜 Procure por comentários especiais, anotações ou... pistas.</li>
+  </ul>
+
+  <div class="fala">
+    “Um bom aprendiz sabe onde olhar... Nem tudo está visível aos olhos. 
+    Às vezes, é preciso abrir os bastidores do código para encontrar a verdade.”
+  </div>
+
+  <p><em>Dica: A primeira flag está escondida em algum lugar do código-fonte. Você saberá que a encontrou quando vir algo assim:</em></p>
+  <div class="pre-box">
+  &lt;!-- 3c0{ver_codigo_fonte} --&gt;
+  </div>
+
+  <div class="fala">
+    “Parabéns por ter chegado até aqui. Você agora sabe usar tags, atributos, comentários e até olhar por trás do véu. 
+    Está pronto para invocar as cores e formas no próximo capítulo. <a href="{{ url_for('desafio_bp.rift_html')}}" class="btn btn-sm btn-outline-light">aqui</a>
+  </div>
+
+   <script>
+     function verificarResposta(idInput, respostaEsperada, idFeedback) {
+       const input = document.getElementById(idInput).value.trim().toLowerCase();
+       const esperado = respostaEsperada.toLowerCase();
+       const feedback = document.getElementById(idFeedback);
+
+       if (input === esperado) {
+         feedback.innerHTML = "✅ Correto!";
+         feedback.className = "resultado correto";
+       } else {
+         feedback.innerHTML = "❌ Resposta incorreta. Tente novamente.";
+         feedback.className = "resultado errado";
+       }
+     }
+
+     function verificarTag(idInput, tagEsperada, idFeedback) {
+       const input = document.getElementById(idInput).value.trim().toLowerCase();
+       const feedback = document.getElementById(idFeedback);
+       if (input.startsWith(`<${tagEsperada}`) && input.endsWith(`</${tagEsperada}>`)) {
+         feedback.innerHTML = "✅ Ótimo! Sua tag está correta.";
+         feedback.className = "resultado correto";
+       } else {
+         feedback.innerHTML = "❌ Parece que a tag está incorreta. Verifique a abertura e o fechamento.";
+         feedback.className = "resultado errado";
+       }
+     }
+
+     function verificarComentario(idInput, textoEsperado, idFeedback) {
+       const input = document.getElementById(idInput).value.trim();
+       const feedback = document.getElementById(idFeedback);
+
+       // Expressão regular para extrair o conteúdo dentro do comentário
+       const match = input.match(/^<!--\s*(.*?)\s*-->$/i);
+
+       if (match && match[1].toLowerCase() === textoEsperado.toLowerCase()) {
+         feedback.innerHTML = "✅ Muito bem! Comentário escrito corretamente.";
+         feedback.className = "resultado correto";
+       } else {
+         feedback.innerHTML = "❌ Comentário mal formado. Use exatamente: <!-- " + textoEsperado + " -->";
+         feedback.className = "resultado errado";
+       }
+     }
+
+     function verificarImg(id, feedbackId) {
+       const input = document.getElementById(id).value.trim().toLowerCase();
+       const feedback = document.getElementById(feedbackId);
+       const temSrc = input.includes('src=');
+       const temAlt = input.includes('alt=');
+       const terminaComFechamento = input.endsWith(">") || input.endsWith("/>");
+
+       if (input.startsWith('<img') && temSrc && temAlt && terminaComFechamento) {
+         feedback.innerHTML = "✅ Correto! Sua imagem está bem formada.";
+         feedback.className = "resultado correto";
+       } else {
+         feedback.innerHTML = "❌ Algo está errado. Lembre-se dos atributos src e alt.";
+         feedback.className = "resultado errado";
+       }
+     }
+
+     function verificarLink(id, feedbackId) {
+       const input = document.getElementById(id).value.trim().toLowerCase();
+       const feedback = document.getElementById(feedbackId);
+       const correto = input.includes('<a') &&
+                       input.includes('href="https://google.com"') &&
+                       input.includes('target="_blank"') &&
+                       input.includes('</a>');
+
+       if (correto) {
+         feedback.innerHTML = "✅ Perfeito! Você criou um link com atributos.";
+         feedback.className = "resultado correto";
+       } else {
+         feedback.innerHTML = "❌ Ainda não está certo. Verifique os atributos href e target.";
+         feedback.className = "resultado errado";
+       }
+     }
+
+     
+   </script>
+{% endblock %}

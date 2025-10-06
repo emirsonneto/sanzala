@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='ndongo.css') }}">
+{% endblock %}
+{% block content %}
+
+<h1>🔐 Missão: O Templo das Entradas</h1>
+
+<p>
+No alto das escadas de pedra do templo de Kemet, o escriba Kiala encontra um altar com símbolos misteriosos.
+<br>Mbuta Zemba sussurra:
+</p>
+
+<div class="fala">
+  “Para falar com os deuses da web, o povo usa <strong>inputs</strong>.  
+  E para juntar esses pedidos, usa-se o <code>formulário</code>.”
+</div>
+
+<h2>🔎 Etapa 1: O que é um &lt;input&gt;</h2>
+
+<p>
+O <code>&lt;input&gt;</code> permite que alguém escreva algo.<br>
+Pode ser um nome, uma senha ou até um número mágico.
+</p>
+
+<div class="pre-box">
+  &lt;input type="text" placeholder="Seu nome"&gt;
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 1:</strong> Escreve uma linha com <code>input</code> do tipo texto:<br>
+  <input id="r1" placeholder='Ex: <input type="text">'>
+  <button onclick="verificaTexto('r1', 'type=\"text\"', 'f1')">Confirmar</button>
+  <div id="f1" class="resultado"></div>
+</div>
+
+<h2>📄 Etapa 2: Agrupando com &lt;form&gt;</h2>
+<p>Um formulário junta os inputs e os envia com propósito:</p>
+<div class="pre-box">
+  &lt;form&gt;<br>
+&nbsp;&nbsp;&lt;input type="text"&gt;<br>
+  &nbsp;&nbsp;&lt;button&gt;Enviar&lt;/button&gt;<br>
+  &lt;/form&gt;
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 2:</strong> Crie uma estrutura de formulário com botão:<br>
+  <input id="r2" placeholder='Ex: <form><input><button>Enviar</button></form>'>
+  <button onclick="verificaTexto('r2', '<form>', 'f2')">Confirmar</button>
+  <div id="f2" class="resultado"></div>
+</div>
+
+<h2>🔐 Etapa 3: Senhas e proteção</h2>
+<p>Usa-se <code>type="password"</code> para esconder o que está sendo digitado.</p>
+<div class="pre-box">
+  &lt;input type="password" placeholder="Senha secreta"&gt;
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 3:</strong> Cria um campo de senha:<br>
+  <input id="r3" placeholder='Ex: <input type="password">'>
+  <button onclick="verificaTexto('r3', 'type=\"password\"', 'f3')">Confirmar</button>
+  <div id="f3" class="resultado"></div>
+</div>
+
+<h2>🎯 Etapa 4: Captura com JavaScript</h2>
+<p>Com JavaScript, podemos capturar o valor de um input:</p>
+<div class="pre-box">
+  let nome = document.getElementById("nome").value;
+</div>
+
+<p>Experimente abaixo:</p>
+
+<form onsubmit="mostrarNome(); return false;">
+  <label for="nome">Nome de escriba:</label><br>
+  <input type="text" id="nome" placeholder="Digite seu nome"><br>
+  <button type="submit">Enviar</button>
+</form>
+<p id="resultadoNome" class="resultado"></p>
+
+<div class="fala">
+  “Cada input é como uma pergunta ao espírito digital.  
+  E cada formulário é como um feitiço que os envia para o universo web.” <a href="{{ url_for('desafio_bp.ndongo2')}}" class="btn btn-sm btn-outline-light">aqui</a>
+</div>
+
+<!-- FLAG -->
+<!-- 3c0{input_form_sagrado_kemet} -->
+
+<script>
+function verificaTexto(idInput, trechoEsperado, idFeedback) {
+  const entrada = document.getElementById(idInput).value.toLowerCase().trim();
+  const feedback = document.getElementById(idFeedback);
+  if (entrada.includes(trechoEsperado)) {
+    feedback.innerHTML = "✅ Correto!";
+    feedback.className = "resultado correto";
+  } else {
+    feedback.innerHTML = "❌ Tenta de novo. Lembra da estrutura.";
+    feedback.className = "resultado errado";
+  }
+}
+
+function mostrarNome() {
+  const nome = document.getElementById("nome").value.trim();
+  const msg = document.getElementById("resultadoNome");
+  if (nome.length > 0) {
+    msg.innerHTML = "🪶 Saudações, " + nome + ", escriba de Kemet!";
+    msg.className = "resultado correto";
+  } else {
+    msg.innerHTML = "⚠️ Escreve algo primeiro!";
+    msg.className = "resultado errado";
+  }
+}
+</script>
+
+{% endblock %}

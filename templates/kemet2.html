@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='kemet2.css') }}">
+{% endblock %}
+{% block content %}
+
+<h1>📜 Missão: A Casa da Vida</h1>
+
+<p>
+  Os escribas de <strong>Kemet</strong> guardavam o conhecimento na <em>Per Ankh</em>, a Casa da Vida.  
+  Entre papiros e símbolos sagrados, aprendiam a beleza do equilíbrio — agora, você também vai aprender com... <strong>CSS</strong>.
+</p>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Ancient_Egyptian_Scribe.jpg" alt="Escriba de Kemet" class="avatar">
+
+<div class="fala">
+  “A harmonia de um texto vem da sua forma, seu alinhamento e até do espaço ao redor. 
+  Hoje aprenderemos a arte invisível dos escribas: <code>fontes, margens e proporções</code>.”
+</div>
+
+<h2>🔤 Etapa 1: Fontes com estilo</h2>
+<p>Use <code>font-family</code> para mudar o tipo de letra:</p>
+<div class="pre-box">
+  &lt;p style="font-family: 'Courier New';"&gt;Letras antigas&lt;/p&gt;
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 1:</strong> Use a fonte "Arial":
+  <input id="r1" placeholder='Ex: <p style="font-family: Arial;">Texto</p>'>
+  <button onclick="verificaFonte('r1', 'arial', 'f1')">Confirmar</button>
+  <div id="f1" class="resultado"></div>
+</div>
+
+<h2>🧭 Etapa 2: Alinhamento de texto</h2>
+<p>Use <code>text-align</code> para posicionar o texto:</p>
+<div class="pre-box">
+  &lt;p style="text-align: center;"&gt;Centro do templo&lt;/p&gt;
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 2:</strong> Alinhe o texto à direita:
+  <input id="r2" placeholder='Ex: <p style="text-align: right;">Texto</p>'>
+  <button onclick="verificaAlinhamento('r2', 'right', 'f2')">Confirmar</button>
+  <div id="f2" class="resultado"></div>
+</div>
+
+<h2>📦 Etapa 3: Espaço interno (padding)</h2>
+<p>Use <code>padding</code> para dar espaço *dentro* da borda:</p>
+<div class="pre-box">
+  &lt;div style="padding: 10px;"&gt;Conforto interno&lt;/div&gt;
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 3:</strong> Adicione <code>padding: 20px;</code> a uma div:
+  <input id="r3" placeholder='Ex: <div style="padding: 20px;">Texto</div>'>
+  <button onclick="verificaPadding('r3', '20px', 'f3')">Confirmar</button>
+  <div id="f3" class="resultado"></div>
+</div>
+
+<h2>🌌 Etapa 4: Espaço externo (margin)</h2>
+<p><code>margin</code> controla o espaço *fora* do elemento:</p>
+<div class="pre-box">
+  &lt;div style="margin: 15px;"&gt;Distância dos outros&lt;/div&gt;
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 4:</strong> Use <code>margin: 30px;</code>:
+  <input id="r4" placeholder='Ex: <div style="margin: 30px;">Texto</div>'>
+  <button onclick="verificaMargin('r4', '30px', 'f4')">Confirmar</button>
+  <div id="f4" class="resultado"></div>
+</div>
+
+<h2>🏺 Etapa 5: Bordas arredondadas</h2>
+<p>Use <code>border-radius</code> para bordas suaves:</p>
+<div class="pre-box">
+  &lt;div style="border: 2px solid black; border-radius: 10px;"&gt;Forma sagrada&lt;/div&gt;
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 5:</strong> Crie uma borda com raio de 12px:
+  <input id="r5" placeholder='Ex: <div style="border-radius: 12px;">Texto</div>'>
+  <button onclick="verificaRaio('r5', '12px', 'f5')">Confirmar</button>
+  <div id="f5" class="resultado"></div>
+</div>
+
+<div class="fala">
+  “Parabéns, iniciado. Você dominou os espaços, letras e formas.  
+  Em breve, poderá criar arte com CSS como um verdadeiro arquiteto de Kemet.”
+</div>
+
+<!-- SEGUNDA FLAG -->
+<!-- 3c0{casa_da_vida_css_vivo_em_ti} -->
+
+
+<h2>🌟 Etapa Extra: Exibir e Esconder com <code>display</code></h2>
+<p>
+  Com a propriedade <code>display</code>, podemos mostrar ou ocultar elementos:
+</p>
+<div class="pre-box">
+&lt;div style="display: none;"&gt;Estou escondido&lt;/div&gt;<br>
+&lt;div style="display: block;"&gt;Agora apareci&lt;/div&gt;
+</div>
+
+<p>
+  Use <code>display: none;</code> para esconder um elemento, e <code>display: block;</code> para torná-lo visível novamente.
+</p>
+
+<div class="exercicio">
+  <strong>Exercício 2:</strong> Crie uma <code>&lt;div&gt;</code> que apareça usando <code>display: block;</code><br>
+  <input id="resDisplay" placeholder='Ex: <div style="display: block;">Texto visível</div>'>
+  <button onclick="verificarTexto('resDisplay', 'display: block;', 'feedbackDisplay')">Confirmar</button>
+  <div id="feedbackDisplay" class="resultado"></div>
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 3:</strong> Crie uma <code>&lt;div&gt;</code> invisível com <code>display: none;</code><br>
+  <input id="resNone" placeholder='Ex: <div style="display: none;">Oculto</div>'>
+  <button onclick="verificarTexto('resNone', 'display: none;', 'feedbackNone')">Confirmar</button>
+  <div id="feedbackNone" class="resultado"></div>
+</div>
+
+<div class="exercicio">
+  <strong>Exercício 1:</strong> Qual forma de CSS permite alterar rapidamente muitos elementos com um só arquivo?<br>
+  <input id="res1" placeholder="Ex: externo">
+  <button onclick="verificarTexto('res1', 'externo', 'feedback1')">Confirmar</button>
+  <div id="feedback1" class="resultado"></div>
+</div>
+
+<div class="fala">
+  “Escolha sabiamente, jovem escriba. Kemet te observa. E aqueles que sabem usar o estilo... controlam o mundo visual.”
+</div>
+
+<script>
+function verificaFonte(id, fonte, saida) {
+  const val = document.getElementById(id).value.toLowerCase();
+  document.getElementById(saida).innerHTML = val.includes(fonte) ? "✅ Correto!" : "❌ Use a fonte " + fonte;
+  document.getElementById(saida).className = val.includes(fonte) ? "resultado correto" : "resultado errado";
+}
+function verificaAlinhamento(id, alinhar, saida) {
+  const val = document.getElementById(id).value.toLowerCase();
+  document.getElementById(saida).innerHTML = val.includes("text-align: " + alinhar) ? "✅ Certo!" : "❌ Use text-align: " + alinhar;
+  document.getElementById(saida).className = val.includes("text-align: " + alinhar) ? "resultado correto" : "resultado errado";
+}
+function verificaPadding(id, px, saida) {
+  const val = document.getElementById(id).value.toLowerCase();
+  document.getElementById(saida).innerHTML = val.includes("padding: " + px) ? "✅ Ok!" : "❌ Use padding: " + px;
+  document.getElementById(saida).className = val.includes("padding: " + px) ? "resultado correto" : "resultado errado";
+}
+function verificaMargin(id, px, saida) {
+  const val = document.getElementById(id).value.toLowerCase();
+  document.getElementById(saida).innerHTML = val.includes("margin: " + px) ? "✅ Ok!" : "❌ Use margin: " + px;
+  document.getElementById(saida).className = val.includes("margin: " + px) ? "resultado correto" : "resultado errado";
+}
+function verificaRaio(id, px, saida) {
+  const val = document.getElementById(id).value.toLowerCase();
+  document.getElementById(saida).innerHTML = val.includes("border-radius: " + px) ? "✅ Suave e correto!" : "❌ Use border-radius: " + px;
+  document.getElementById(saida).className = val.includes("border-radius: " + px) ? "resultado correto" : "resultado errado";
+}
+
+  function verificarTexto(idInput, respostaEsperada, idFeedback) {
+    const input = document.getElementById(idInput).value.trim().toLowerCase();
+    const feedback = document.getElementById(idFeedback);
+    if (input.includes(respostaEsperada)) {
+      feedback.innerHTML = "✅ Correto!";
+      feedback.className = "resultado correto";
+    } else {
+      feedback.innerHTML = "❌ Tente novamente.";
+      feedback.className = "resultado errado";
+    }
+  }
+</script>
+{% endblock %}

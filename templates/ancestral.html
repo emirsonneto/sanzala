@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{%block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='ancestral.css') }}">
+{% endblock%}
+{% block content %}
+
+<h2 class="titulo">🌀 Renascimento dos 100 Ancestrais</h2>
+
+<div class="avatar-grid">
+  {% for i in range(1, total + 1) %}
+  <div>
+    <div class="ancestral-avatar">
+      <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Ancestral {{ i }}">
+    </div>
+    <div class="ancestral-info">Ancestral {{ i }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+ {% endblock %}
+  <script>
+    const grid = document.querySelector('.avatar-grid');
+    for (let i = 1; i <= 100; i++) {
+      const bloco = document.createElement('div');
+
+      bloco.innerHTML = `
+        <div class="ancestral-avatar">
+          <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Ancestral ${i}">
+        </div>
+        <div class="ancestral-info">Ancestral ${i}</div>
+      `;
+      grid.appendChild(bloco);
+    }
+  </script>

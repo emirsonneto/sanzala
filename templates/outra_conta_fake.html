@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <!-- Menu horizontal -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light rounded mb-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Minha Conta</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar" aria-controls="menuNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('fake.loja') }}">Ir na Loja</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('fake.buscar_produtos') }}">Produtos</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-danger nav-link text-white" onclick="sair()">Sair</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Conteúdo da conta -->
+  <div class="d-flex align-items-center gap-3">
+    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="rounded-circle" width="80" height="80">
+    <div>
+      <h3 id="nomeUsuario">{{user.nome}}</h3>
+      <p id="emailUsuario" class="text-muted">{{ user.email }}</p>
+	{% if user.nome == "clinton" %}
+  <p class="small text-danger">FLAG: 3c0{parabens_pelo_roubo_de_dados_WEEK_SESSION}</p>
+{% else %}
+  <p>Segredo: 3c0{parabens_deu_certo_?}</p>
+{% endif %}
+    </div>
+  </div>
+  <h1 class="mt-5">Conta Fake 2</h1>
+</div>
+
+<script>
+  function sair() {
+    alert("Sessão terminada.");
+    window.location.href = "{{ url_for('fake.fake_sair') }}";
+  }
+</script>
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>🧪 Produtos Fake</h1>
+<form method="POST">
+   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <input type="text" name="nome" placeholder="Nome do produto">
+  <input type="text" name="preco" placeholder="Preço">
+  <textarea name="descricao" placeholder="Descrição"></textarea>
+  <button type="submit">Adicionar</button>
+</form>
+
+{% endblock %}

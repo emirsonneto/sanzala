@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2>🔎 Busca de Produtos (com falha SQLi-Metodo POST)</h2>
+  <form method="POST" action="/buscar_produto" >
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="text" name="termo" placeholder="Nome do produto" class="form-control">
+    <button type="submit" class="btn btn-warning mt-2">Buscar</button>
+  </form>
+
+  {% if erro %}
+    <div class="alert alert-danger mt-3">{{ erro }}</div>
+  {% endif %}
+
+  {% if resultado %}
+  <h3>Resultado</h3>
+  <ul>
+    {% for r in resultado %}
+      <li>{{ r.nome }} - {{ r.preco }}</li>
+    {% endfor %}
+  </ul>
+  {% elif resultado is not none %}
+    <div class="alert alert-warning mt-4">Nenhum produto encontrado.</div>
+  {% endif %}
+
+</div>
+<div class="mt-4">
+  <a href="{{ url_for('fake.buscar_outros') }}" class="btn btn-primary">buscar outros</a>
+</div>
+<div class="mt-4">
+  <a href="{{ url_for('fake.loja') }}" class="btn btn-primary">voltar</a>
+</div>
+{% endblock %}

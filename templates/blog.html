@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='blog.css') }}">
+{% endblock %}
+{% block content %}
+<div class="blog-header">
+  <h1><i class="fas fa-blog me-2"></i>Blog da Sanzala</h1>
+  <p>Conectando passado, futuro e código em cada postagem.</p>
+<a href="{{ url_for('public.home') }}" class="back-icon">
+    <i class="bi bi-arrow-left"></i>
+</a>
+</div>
+
+<div class="container my-5">
+  <div class="row">
+
+    <!-- SIDEBAR ESQUERDA -->
+    <div class="col-lg-3">
+      <div class="sidebar">
+        <h5><i class="fas fa-tags me-1"></i> PERFIL</h5>
+        <div class="category-item">⚔️Batalhas Vencidas</div>
+        <div class="category-item">🧬 Publicacoes</div>
+        <div class="category-item">🌐 Cultura Digital</div>
+        <div class="category-item"> SAIR</div>
+      </div>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="col-lg-6">
+      <form method="POST" class="form-postagem mb-4">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+          {{ form.titulo.label(class="form-label") }}
+          {{ form.titulo(class="form-control", placeholder="Ex: Revelações do Guardião") }}
+          {% for erro in form.titulo.errors %}
+            <div class="text-danger">{{ erro }}</div>
+          {% endfor %}
+        </div>
+        <div class="mb-3">
+          {{ form.conteudo.label(class="form-label") }}
+          {{ form.conteudo(class="form-control", rows=4, placeholder="Transcreva os sinais...") }}
+          {% for erro in form.conteudo.errors %}
+            <div class="text-danger">{{ erro }}</div>
+          {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-postar w-100">
+          <i class="fas fa-feather me-1"></i> Postar
+        </button>
+      </form>
+
+      {% for post in posts %}
+      <div class="post-card">
+        <div class="d-flex justify-content-between align-items-start">
+          <h4>{{ post.icone }} {{ post.titulo }}</h4>
+          <div class="text-end">
+            <small class="text-muted">{{ post.data_criacao.strftime('%d/%m/%Y') }}</small><br>
+            <small class="text-muted">{{ post.autor.titulo }}</small>
+          </div>
+        </div>
+
+        <p>{{ post.conteudo }}</p>
+
+        <div class="post-footer d-flex justify-content-between align-items-center mt-2">
+          <div class="d-flex align-items-center">
+            <img src="{{ post.autor.avatar }}" class="user-avatar me-2" alt="avatar">
+            <span>{{ post.autor.nome }}</span>
+          </div>
+          <div>
+            <a href="{{ url_for('auth.ver_post', id=post.id) }}">
+              <i class="far fa-comment comment-icon"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- SIDEBAR DIREITA -->
+    <div class="col-lg-3">
+      <div class="sidebar">
+        <h5><i class="fas fa-star me-1"></i> Destaques</h5>
+        <div class="highlight-item">🔥 Nubia e Nubias</div>
+        <div class="highlight-item">📜 Manuscritos de Akanda</div>
+        <div class="highlight-item">👁️ 11 de Novembro</div>
+        <div class="highlight-item">🗝️ Loja dos Desejos</div>
+      </div>
+
+      <div class="sidebar">
+        <h5><i class="fas fa-user-friends me-1"></i> Autores</h5>
+        <div class="author-item">👤 M0d0d3v00</div>
+        <div class="author-item">👤 N4ru10N310</div>
+        <div class="author-item">👤 M4r14</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- PAGINAÇÃO -->
+<nav aria-label="Navegação da página do blog">
+  <ul class="pagination justify-content-center mt-4">
+
+    {% if paginacao.has_prev %}
+      <li class="page-item">
+        <a class="page-link" href="{{ url_for('auth.blog', page=paginacao.prev_num) }}" aria-label="Anterior">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">&laquo;</span>
+      </li>
+    {% endif %}
+
+    {% for page_num in paginacao.iter_pages(left_edge=1, right_edge=1, left_current=2, right_current=2) %}
+      {% if page_num %}
+        {% if page_num == paginacao.page %}
+          <li class="page-item active"><span class="page-link">{{ page_num }}</span></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="{{ url_for('auth.blog', page=page_num) }}">{{ page_num }}</a></li>
+        {% endif %}
+      {% else %}
+        <li class="page-item disabled"><span class="page-link">…</span></li>
+      {% endif %}
+    {% endfor %}
+
+    {% if paginacao.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="{{ url_for('auth.blog', page=paginacao.next_num) }}" aria-label="Próximo">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <span class="page-link">&raquo;</span>
+      </li>
+    {% endif %}
+
+  </ul>
+</nav>
+<footer style="background: #0d0d0d; color: #e0fdf4; padding-top: 2rem;">
+  <div class="container text-center mb-4">
+    <!-- LOGO SVG CENTRALIZADA -->
+    <svg width="100" height="100" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="70" cy="70" r="66" fill="none" stroke="#00FFAE" stroke-width="3.5"/>
+      <text x="70" y="90" text-anchor="middle" font-size="110" font-family="Segoe UI Black, Arial Black, sans-serif" fill="#00FFAE" dominant-baseline="middle">S</text>
+      <defs><path id="curva-footer" d="M 35,32 A 47,47 0 0,1 105,32"/></defs>
+      <text font-size="10" font-family="Arial Black, sans-serif" fill="#00FFAE" letter-spacing="2">
+        <textPath href="#curva-footer" startOffset="50%" text-anchor="middle">SANZALA</textPath>
+      </text>
+    </svg>
+    <p class="mt-2 small text-muted">Guardioes de Memorias</p>
+  </div>
+
+  <!-- COLUNAS -->
+  <div class="container">
+    <div class="row text-center text-md-start">
+      <div class="col-md-4 footer-section mb-4">
+        <h6><i class="bi bi-link-45deg"></i> Links Úteis</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-decoration-none text-light">Início</a></li>
+          <li><a href="#" class="text-decoration-none text-light">Missões</a></li>
+          <li><a href="#" class="text-decoration-none text-light">Blog</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-section mb-4">
+        <h6><i class="bi bi-info-circle"></i> Sobre a Sanzala</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-decoration-none text-light">História</a></li>
+          <li><a href="#" class="text-decoration-none text-light">Objetivos</a></li>
+          <li><a href="#" class="text-decoration-none text-light">Equipe</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-section mb-4">
+        <h6><i class="bi bi-share-fill"></i> Social</h6>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-decoration-none text-light"><i class="bi bi-discord"></i> Discord</a></li>
+          <li><a href="#" class="text-decoration-none text-light"><i class="bi bi-twitter"></i> Twitter</a></li>
+          <li><a href="#" class="text-decoration-none text-light"><i class="bi bi-instagram"></i> Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RODAPÉ INFERIOR -->
+    <div class="footer-bottom text-center py-3 border-top border-secondary">
+      © 2025 A Sanzala. Todos os direitos reservados. |
+      <a href="{{ url_for('public.termos') }}" class="text-decoration-none text-secondary">Termos & Condições</a>
+    </div>
+  </div>
+</footer>
+{% endblock %}
+
+
+

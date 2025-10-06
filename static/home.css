@@ -1,0 +1,272 @@
+:root {
+  --primary-color: #00ffae;
+  --secondary-color: #0f0f0f;
+  --highlight-color: #1affd5;
+  --card-bg: #0b0f0b;
+  --text-color: #e0fdf4;
+}
+
+body {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+.navbar {
+  background-color: #000;
+
+}
+
+.btn-glow {
+  background-color: var(--primary-color);
+  color: #000;
+  font-weight: bold;
+  border: none;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-glow:hover {
+  transform: scale(1.05);
+/*     box-shadow: 0 0 30px var(--highlight-color);*/
+}
+
+.hero-section {
+  background: radial-gradient(circle at top, #0a0a0a, #050505);
+  padding: 100px 20px 60px;
+  text-align: center;
+  position: relative;
+}
+
+.hero-section h1 {
+  font-size: 4rem;
+  color: var(--primary-color);
+  text-shadow: 0 0 10px var(--highlight-color);
+}
+
+.hero-section p {
+  font-size: 1.3rem;
+  color: #b6f0e8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.pulse-glow {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 10px var(--highlight-color); }
+  50% { box-shadow: 0 0 25px var(--highlight-color); }
+  100% { box-shadow: 0 0 10px var(--highlight-color); }
+}
+
+.feature-card {
+  background-color: var(--primary-color);
+  border-radius: 12px;
+  padding: 20px;
+  color: #000;
+  transition: 0.3s;
+  height: 100%;
+  position: relative;
+}
+
+.feature-card h5 {
+  color: #000;
+}
+
+.feature-icon {
+  font-size: 3rem;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin: 40px 0 20px;
+  text-align: left;
+  border-left: 5px solid var(--highlight-color);
+  padding-left: 15px;
+}
+
+.mission-list {
+  background-color: #111;
+  border: 2px solid var(--highlight-color);
+  padding: 20px;
+  border-radius: 12px;
+  color: var(--text-color);
+  box-shadow: 0 0 10px #00ffae44;
+  transition: 0.3s;
+}
+
+.mission-list h5 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid var(--highlight-color);
+  padding-bottom: 10px;
+}
+
+.mission-item {
+  background: #1a1a1a;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+  border-left: 4px solid var(--primary-color);
+  font-size: 0.95rem;
+}
+
+.mission-item:hover {
+  background: #222;
+  transform: scale(1.02);
+}
+
+.terminal-card {
+  background-color: #000;
+  color: var(--primary-color);
+  font-family: 'Courier New', Courier, monospace;
+  border-radius: 10px;
+  padding: 25px;
+  margin-top: 20px;
+  font-size: 1rem;
+  position: relative;
+}
+
+.terminal-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  color: var(--primary-color);
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+}
+
+.cursor {
+  display: inline-block;
+  background-color: var(--primary-color);
+  width: 8px;
+  height: 16px;
+  animation: blink 1s steps(2, start) infinite;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+.feature-card p {
+color: #fff;
+}
+
+footer {
+  margin-top: 4rem;
+  background-color: #111;
+  padding: 3rem 1rem 1rem;
+  color: #ccc;
+}
+
+.footer-section h6 {
+  color: var(--borda-verde);
+  margin-bottom: 1rem;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-section li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-section i {
+  margin-right: 0.5rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid #444;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+@media (max-width: 991px) {
+  .d-flex.flex-lg-nowrap.flex-wrap {
+    flex-direction: column !important;
+  }
+}
+.terminal-line {
+  display: flex;
+  align-items: center;
+  font-family: 'Courier New', monospace;
+  margin-top: 10px;
+  color: var(--primary-color);
+}
+
+.prompt {
+  margin-right: 8px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.typed {
+  background: transparent;
+  outline: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1rem;
+  min-height: 1.2em;
+  white-space: pre-wrap;
+  flex-grow: 1;
+}
+
+.cursor {
+  font-weight: bold;
+  margin-left: 5px;
+  animation: blink 1s steps(2, start) infinite;
+  font-size: 1rem;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+.user-avatar {
+  border: 2px solid #00ffaa;
+  box-shadow: 0 0 5px #00ffaa88;
+}
+
+.badge-pontos {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #00ffaa;
+  color: #000;
+  font-size: 0.65rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 999px;
+  box-shadow: 0 0 5px #00ffaa88;
+}
+
+.user-nome {
+  font-size: 0.75rem;
+  color: #e0fdf4;
+  text-shadow: 0 0 3px #00ffaa77;
+  font-weight: bold;
+}

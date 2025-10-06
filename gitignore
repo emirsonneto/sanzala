@@ -1,0 +1,4 @@
+# Arquivos sensíveis
+.env
+__pycache__/
+instance/
